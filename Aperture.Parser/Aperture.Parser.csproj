@@ -42,9 +42,11 @@
   <ItemGroup>
     <Compile Include="Common\IntegerUtils.cs" />
     <Compile Include="Common\StringUtils.cs" />
-    <Compile Include="Exceptions\HtmlParseException.cs" />
-    <Compile Include="Exceptions\InvalidHtmlFloatNumberException.cs" />
-    <Compile Include="Exceptions\InvalidHtmlIntegerException.cs" />
+    <Compile Include="Exceptions\ParseException.cs" />
+    <Compile Include="Exceptions\InvalidDimensionValueException.cs" />
+    <Compile Include="Exceptions\InvalidFloatNumberException.cs" />
+    <Compile Include="Exceptions\InvalidIntegerException.cs" />
+    <Compile Include="Helpers\Dimension.cs" />
     <Compile Include="Logging\NonConformingError.cs" />
     <Compile Include="Logging\ParserLogging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
