@@ -143,6 +143,15 @@ namespace Aperture.Parser.Common
             return result;
         }
 
+        /// <summary>
+        /// Skips whitespace in a string, and changes the position to the next 
+        /// non-whitespace character.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="position">
+        /// The current position at which to skip whitespace.
+        /// </param>
+        /// <returns>The space characters obtained.</returns>
         public static string SkipWhitespace(string input, ref int position)
         {
             return CollectSequenceOfCharacters(

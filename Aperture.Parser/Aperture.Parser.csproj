@@ -40,7 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\IntegerUtils.cs" />
     <Compile Include="Common\StringUtils.cs" />
+    <Compile Include="Exceptions\HtmlParseException.cs" />
+    <Compile Include="Exceptions\InvalidHtmlFloatNumberException.cs" />
+    <Compile Include="Exceptions\InvalidHtmlIntegerException.cs" />
+    <Compile Include="Logging\NonConformingError.cs" />
+    <Compile Include="Logging\ParserLogging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
