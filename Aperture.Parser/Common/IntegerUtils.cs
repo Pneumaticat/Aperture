@@ -31,7 +31,7 @@ namespace Aperture.Parser.Common
             }
             else if (input[position] == '+')
             {
-                ParserLogging.LogNonConformingError(
+                ParserLogging.LogNCRecoverableError(
                     NonConformingError.PlusSignAtBeginningOfIntegerString);
 
                 position++;
@@ -96,7 +96,7 @@ namespace Aperture.Parser.Common
             }
             else if (input[position] == '+')
             {
-                ParserLogging.LogNonConformingError(
+                ParserLogging.LogNCRecoverableError(
                     NonConformingError.PlusSignAtBeginningOfFloatingPointString);
                 position++;
                 if (position >= input.Length)

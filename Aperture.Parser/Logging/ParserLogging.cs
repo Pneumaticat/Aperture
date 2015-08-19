@@ -9,7 +9,7 @@ namespace Aperture.Parser.Logging
 {
     public static class ParserLogging
     {
-        public static void LogNonConformingError(NonConformingError error)
+        public static void LogNCRecoverableError(NonConformingError error)
         {
             Debug.Print("Non-conforming HTML error: NC" + error.ToString());
         }
