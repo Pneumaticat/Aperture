@@ -1,14 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Aperture.Parser.Common
 {
-    // HTML spec 2.4.1 Common parser idioms
     public static class StringUtils
     {
+        // HTML spec 2.3 Case-sensitivity and string comparisons
+        public static bool CompareCaseSensitive(string str1, string str2)
+        {
+            return str1 == str2;
+        }
+        public static bool CompareASCIICaseInsensitive(string str1, string str2)
+        {
+            return ConvertToASCIILowercase(str1) == ConvertToASCIILowercase(str2);
+        }
+
+        public static bool CompareCompatibilityCaseless(string str1, string str2)
+        {
+            // Unicode spec version 7.0, page 158, D146
+            // TODO: ToLowerInvariant() may not match the spec's toCasefold method exactly.
+            return str1.Normalize(NormalizationForm.FormD)
+                .ToLowerInvariant()
+                .Normalize(NormalizationForm.FormKD)
+                .ToLowerInvariant()
+                .Normalize(NormalizationForm.FormKD)
+
+                ==
+
+                str2.Normalize(NormalizationForm.FormD)
+                .ToLowerInvariant()
+                .Normalize(NormalizationForm.FormKD)
+                .ToLowerInvariant()
+                .Normalize(NormalizationForm.FormKD);
+        }
+
+        public static string ConvertToASCIIUppercase(string input)
+        {
+            char[] inputArr = input.ToCharArray();
+            for (int i = 0; i < inputArr.Length; i++)
+            {
+                if (LowercaseASCIILetters.Contains(inputArr[i]))
+                {
+                    int charIndex = Array.IndexOf(LowercaseASCIILetters, inputArr[i]);
+                    inputArr[i] = UppercaseASCIILetters[charIndex];
+                }
+            }
+
+            return new string(inputArr);
+        }
+        public static string ConvertToASCIILowercase(string input)
+        {
+            char[] inputArr = input.ToCharArray();
+            for (int i = 0; i < inputArr.Length; i++)
+            {
+                if (UppercaseASCIILetters.Contains(inputArr[i]))
+                {
+                    int charIndex = Array.IndexOf(UppercaseASCIILetters, inputArr[i]);
+                    inputArr[i] = LowercaseASCIILetters[charIndex];
+                }
+            }
+
+            return new string(inputArr);
+        }
+
+        // HTML spec 2.4.1 Common parser idioms
         public static readonly char[] SpaceCharacters =
         {
             '\u0020', // SPACE

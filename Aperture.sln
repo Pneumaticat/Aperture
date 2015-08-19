@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aperture.Parser", "Aperture.Parser\Aperture.Parser.csproj", "{74E7752E-4ECF-4124-91D2-55AC41186422}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aperture.Parserx", "Aperture.Parser\Aperture.Parserx.csproj", "{74E7752E-4ECF-4124-91D2-55AC41186422}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
