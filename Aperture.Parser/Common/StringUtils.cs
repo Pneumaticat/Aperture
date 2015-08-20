@@ -10,15 +10,22 @@ namespace Aperture.Parser.Common
     public static class StringUtils
     {
         // HTML spec 2.3 Case-sensitivity and string comparisons
+        
         public static bool CompareCaseSensitive(string str1, string str2)
         {
             return str1 == str2;
         }
+        /// <summary>
+        /// Compares strings, where A-Z == a-z.
+        /// </summary>
         public static bool CompareASCIICaseInsensitive(string str1, string str2)
         {
             return ConvertToASCIILowercase(str1) == ConvertToASCIILowercase(str2);
         }
 
+        /// <summary>
+        /// Unicode string comparing, with no regard for capitalization.
+        /// </summary>
         public static bool CompareCompatibilityCaseless(string str1, string str2)
         {
             // Unicode spec version 7.0, page 158, D146
@@ -38,6 +45,9 @@ namespace Aperture.Parser.Common
                 .Normalize(NormalizationForm.FormKD);
         }
 
+        /// <summary>
+        /// Converts a-z to A-Z.
+        /// </summary>
         public static string ConvertToASCIIUppercase(string input)
         {
             char[] inputArr = input.ToCharArray();
@@ -52,6 +62,10 @@ namespace Aperture.Parser.Common
 
             return new string(inputArr);
         }
+
+        /// <summary>
+        /// Converts A-Z to a-z.
+        /// </summary>
         public static string ConvertToASCIILowercase(string input)
         {
             char[] inputArr = input.ToCharArray();
@@ -68,6 +82,10 @@ namespace Aperture.Parser.Common
         }
 
         // HTML spec 2.4.1 Common parser idioms
+
+        /// <summary>
+        /// White space characters, for the purpose of HTML.
+        /// </summary>
         public static readonly char[] SpaceCharacters =
         {
             '\u0020', // SPACE
@@ -77,6 +95,9 @@ namespace Aperture.Parser.Common
             '\u000D'  // CARRIAGE RETURN (CR)
         };
 
+        /// <summary>
+        /// White space characters, according to the Unicode spec.
+        /// </summary>
         public static readonly char[] White_SpaceCharacters =
         {
             '\u0009',         // <control-0009>..<control-000D>
@@ -129,8 +150,22 @@ namespace Aperture.Parser.Common
             "0123456789ABCDEF".ToCharArray();
         public static readonly char[] LowercaseASCIIHexDigits =
             "0123456789abcdef".ToCharArray();
-
-        // TODO: After running to end of string, position may point past end of string?
+        
+        /// <summary>
+        /// Collects a seqence of characters for as long as <em>predicate</em> 
+        /// is true.
+        /// </summary>
+        /// <param name="input">The string to collect from.</param>
+        /// <param name="position">
+        /// The position to begin collecting from in the string; this is 
+        /// modified to point to the character after the collected sequence. 
+        /// (May point past the end of the string, if the sequence of 
+        /// characters reached the end of the string.)
+        /// </param>
+        /// <param name="predicate">
+        /// Collects characters for as long as this returns true.
+        /// </param>
+        /// <returns>The sequence collected.</returns>
         public static string CollectSequenceOfCharacters(string input, ref int position, Func<char, bool> predicate)
         {
             string result = string.Empty;
@@ -160,16 +195,26 @@ namespace Aperture.Parser.Common
                 (char ch) => SpaceCharacters.Contains(ch));
         }
 
+        /// <summary>
+        /// Removes all line breaks (\r and \n) from a string.
+        /// </summary>
         public static string StripLineBreaks(string input)
         {
             return input.Replace("\r", "").Replace("\n", "");
         }
 
+        /// <summary>
+        /// Removes all space characters from the beginning and end of input.
+        /// </summary>
         public static string TrimLeadingAndTrailingWhitespace(string input)
         {
             return input.Trim(SpaceCharacters);
         }
 
+        /// <summary>
+        /// Replaces sequences of 1+ space chars in input with a single space, 
+        /// and then strips leading and trailing whitespace.
+        /// </summary>
         public static string StripAndCollapseWhitespace(string input)
         {
             StringBuilder sbOut = new StringBuilder();
