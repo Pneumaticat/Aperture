@@ -14,7 +14,7 @@ namespace Aperture.Parser.Helpers
     }
     public struct DimensionListPair
     {
-        public int number;
+        public double number;
         public DimensionListPairUnit unit;
     }
 }

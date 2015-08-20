@@ -55,6 +55,7 @@
     <Compile Include="DateUtilsUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FloatingPointUnitTests.cs" />
+    <Compile Include="DimensionListUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aperture.Parser\Aperture.Parser.csproj">
