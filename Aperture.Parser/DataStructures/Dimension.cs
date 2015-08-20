@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.Helpers
+namespace Aperture.Parser.DataStructures
 {
     public enum DimensionType
     {

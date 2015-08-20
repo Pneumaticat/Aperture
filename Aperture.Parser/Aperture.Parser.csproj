@@ -46,8 +46,8 @@
     <Compile Include="Exceptions\InvalidDimensionValueException.cs" />
     <Compile Include="Exceptions\InvalidFloatNumberException.cs" />
     <Compile Include="Exceptions\InvalidIntegerException.cs" />
-    <Compile Include="Helpers\Dimension.cs" />
-    <Compile Include="Helpers\DimensionListPair.cs" />
+    <Compile Include="DataStructures\Dimension.cs" />
+    <Compile Include="DataStructures\DimensionListPair.cs" />
     <Compile Include="Logging\NonConformingError.cs" />
     <Compile Include="Logging\ParserLogging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

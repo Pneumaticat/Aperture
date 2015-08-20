@@ -1,5 +1,5 @@
 ﻿using Aperture.Parser.Exceptions;
-using Aperture.Parser.Helpers;
+using Aperture.Parser.DataStructures;
 using Aperture.Parser.Logging;
 using System;
 using System.Collections.Generic;
