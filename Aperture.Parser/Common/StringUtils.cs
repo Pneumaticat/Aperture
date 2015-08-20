@@ -218,5 +218,16 @@ namespace Aperture.Parser.Common
 
             return tokens.ToArray();
         }
+
+        // 2.4.8 Comma-separated tokens
+        public static string[] SplitStringOnCommas(string input)
+        {
+            // Not exactly following the spec, but the end result should be 
+            // the same.
+            return (from str
+                    in input.Split(',')
+                    select str.Trim(SpaceCharacters)
+                   ).ToArray();
+        }
     }
 }

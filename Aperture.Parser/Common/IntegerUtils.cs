@@ -384,5 +384,80 @@ namespace Aperture.Parser.Common
 
             return numbers;
         }
+
+        public static List<DimensionListPair> ParseListOfDimensions(string rawInput)
+        {
+            // Remove optional last comma
+            if (rawInput.Last() == ',')
+                rawInput.Remove(rawInput.Length - 2, 1);
+
+            string[] rawTokens = StringUtils.SplitStringOnCommas(rawInput);
+
+            List<DimensionListPair> result = new List<DimensionListPair>();
+
+            foreach (string input in rawTokens)
+            {
+                int position = 0;
+                int value = 0;
+                DimensionListPairUnit unit = DimensionListPairUnit.Absolute;
+
+                if (position >= input.Length)
+                {
+                    unit = DimensionListPairUnit.Relative;
+                    goto AddToResults;
+                }
+                else if (StringUtils.ASCIIDigits.Contains(input[position]))
+                {
+                    value = value +
+                        (int.Parse(
+                            StringUtils.CollectSequenceOfCharacters(
+                                input,
+                                ref position,
+                                (char ch) =>
+                                 StringUtils.ASCIIDigits.Contains(ch))));
+                }
+
+                if (input[position] == '.')
+                {
+                    // Collect a sequence of characters consisting of 
+                    // space characters and ASCII digits.
+                    string s = StringUtils.CollectSequenceOfCharacters(
+                        input, ref position,
+                        (char ch) => 
+                            StringUtils.ASCIIDigits.Contains(ch) ||
+                            StringUtils.SpaceCharacters.Contains(ch));
+
+                    // Remove space chars from s
+                    foreach (char ch in StringUtils.SpaceCharacters)
+                        s = s.Replace(ch.ToString(), "");
+
+                    if (s != string.Empty)
+                    {
+                        int length = s.Length;
+                        // TODO: Correct type?
+                        int fraction = int.Parse(s) / (10 ^ length);
+                        value += fraction;
+                    }
+                }
+
+                StringUtils.SkipWhitespace(input, ref position);
+
+                // Check if position is past end of string, which isn't 
+                // said in the spec, but I think otherwise there are some 
+                // situations where it will throw an exception because 
+                // position is past the end of the string.
+                if (position < input.Length)
+                {
+                    if (input[position] == '%')
+                        unit = DimensionListPairUnit.Percentage;
+                    if (input[position] == '*')
+                        unit = DimensionListPairUnit.Relative;
+                }
+            AddToResults:
+                result.Add(new DimensionListPair { number = value, unit = unit });
+            }
+
+            return result;
+        }
     }
 }
