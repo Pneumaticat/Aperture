@@ -57,6 +57,7 @@
     <Compile Include="FloatingPointTests.cs" />
     <Compile Include="DimensionListTests.cs" />
     <Compile Include="IntegerListTests.cs" />
+    <Compile Include="StringHandlingTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aperture.Parser\Aperture.Parser.csproj">

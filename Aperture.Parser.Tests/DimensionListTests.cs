@@ -41,6 +41,67 @@ namespace Aperture.Parser.Tests
         }
 
         [TestMethod]
+        public void TestSpaceBeforeDimensionUnit()
+        {
+            CollectionAssert.AreEqual(
+                new List<DimensionListPair>
+                {
+                    new DimensionListPair
+                    {
+                        number = 5,
+                        unit = DimensionListPairUnit.Percentage
+                    },
+                    new DimensionListPair
+                    {
+                        number = 7,
+                        unit = DimensionListPairUnit.Relative
+                    }
+                },
+                NumberUtils.ParseListOfDimensions("5  %, 7  *")
+            );
+        }
+
+        [TestMethod]
+        public void TestDimensionListWhitespace()
+        {
+            CollectionAssert.AreEqual(
+                new List<DimensionListPair>
+                {
+                    new DimensionListPair
+                    {
+                        number = 7,
+                        unit = DimensionListPairUnit.Absolute
+                    },
+                    new DimensionListPair
+                    {
+                        number = 8,
+                        unit = DimensionListPairUnit.Absolute
+                    },
+                    new DimensionListPair
+                    {
+                        number = 9,
+                        unit = DimensionListPairUnit.Absolute
+                    }
+                },
+                NumberUtils.ParseListOfDimensions(
+                    "               7,           8,             9 ")
+            );
+            // Should return 0, relative when given an invalid whitespace-only 
+            // value.
+            CollectionAssert.AreEqual(
+                new List<DimensionListPair>
+                {
+                    new DimensionListPair
+                    {
+                        number = 0,
+                        unit = DimensionListPairUnit.Relative
+                    }
+                },
+                NumberUtils.ParseListOfDimensions("  ")
+            );
+        }
+
+        [TestMethod]
         public void TestDimensionListDecimals()
         {
             CollectionAssert.AreEqual(
