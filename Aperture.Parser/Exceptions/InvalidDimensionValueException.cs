@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aperture.Parser.Exceptions
 {
-    class InvalidDimensionValueException : ParseException
+    public class InvalidDimensionValueException : ParseException
     {
         public InvalidDimensionValueException() : base() { }
         public InvalidDimensionValueException(string message) : base() { }

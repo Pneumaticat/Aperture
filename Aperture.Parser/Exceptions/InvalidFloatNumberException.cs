@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aperture.Parser.Exceptions
 {
-    class InvalidFloatNumberException : ParseException
+    public class InvalidFloatNumberException : ParseException
     {
         public InvalidFloatNumberException() : base() { }
         public InvalidFloatNumberException(string message) : base() { }
