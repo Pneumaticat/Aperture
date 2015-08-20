@@ -398,7 +398,7 @@ namespace Aperture.Parser.Common
             foreach (string input in rawTokens)
             {
                 int position = 0;
-                int value = 0;
+                double value = 0;
                 DimensionListPairUnit unit = DimensionListPairUnit.Absolute;
 
                 if (position >= input.Length)
@@ -417,8 +417,11 @@ namespace Aperture.Parser.Common
                                  StringUtils.ASCIIDigits.Contains(ch))));
                 }
 
-                if (input[position] == '.')
+                if (position < input.Length && input[position] == '.')
                 {
+                    position++; // Move past the .
+                                // Not said in the spec, but perhaps implied?
+
                     // Collect a sequence of characters consisting of 
                     // space characters and ASCII digits.
                     string s = StringUtils.CollectSequenceOfCharacters(
@@ -435,7 +438,7 @@ namespace Aperture.Parser.Common
                     {
                         int length = s.Length;
                         // TODO: Correct type?
-                        int fraction = int.Parse(s) / (10 ^ length);
+                        double fraction = int.Parse(s) / (Math.Pow(10, length));
                         value += fraction;
                     }
                 }
