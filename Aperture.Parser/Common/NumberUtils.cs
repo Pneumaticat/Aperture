@@ -78,8 +78,8 @@ namespace Aperture.Parser.Common
         {
             int position = 0;
             // TODO: Not sure what type this value should have.
-            decimal value = 1;
-            int divisor = 1;
+            double value = 1;
+            double divisor = 1;
             int exponent = 1;
 
             StringUtils.SkipWhitespace(input, ref position);
@@ -181,14 +181,14 @@ namespace Aperture.Parser.Common
                         (char ch) => StringUtils.ASCIIDigits.Contains(ch)));
 
                 exponent = exponent * digitSequence;
-                value = value * (10 ^ exponent);
+                value = value * Math.Pow(10, exponent);
             }
 
         Conversion:
             // TODO: Steps 15-18 are not implemented, in lieu of this. 
             // (Mainly because I'm not sure where to get the entire set of 
             // IEEE 754 double-precision floating points.)
-            return double.Parse(value.ToString());
+            return value;
         }
 
         public static Dimension ParseDimensionValue(string input)
