@@ -14,7 +14,12 @@ namespace Aperture.Parser.DataStructures
     }
     public struct DimensionListPair
     {
-        public double number;
-        public DimensionListPairUnit unit;
+        public DimensionListPair(double number, DimensionListPairUnit unit)
+        {
+            Number = number;
+            Unit = unit;
+        }
+        public double Number { get; }
+        public DimensionListPairUnit Unit { get; }
     }
 }

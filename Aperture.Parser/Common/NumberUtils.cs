@@ -217,11 +217,7 @@ namespace Aperture.Parser.Common
                 (char ch) => StringUtils.ASCIIDigits.Contains(ch)));
 
             if (position >= input.Length)
-                return new Dimension
-                {
-                    type = DimensionType.Length,
-                    value = value
-                };
+                return new Dimension(DimensionType.Length, value);
 
             if (input[position] == '.')
             {
@@ -229,11 +225,7 @@ namespace Aperture.Parser.Common
                 if (position >= input.Length ||
                     !StringUtils.ASCIIDigits.Contains(input[position]))
                 {
-                    return new Dimension
-                    {
-                        type = DimensionType.Length,
-                        value = value
-                    };
+                    return new Dimension(DimensionType.Length, value);
                 }
 
                 int divisor = 1;
@@ -244,33 +236,17 @@ namespace Aperture.Parser.Common
 
                     position++;
                     if (position >= input.Length)
-                        return new Dimension
-                        {
-                            type = DimensionType.Length,
-                            value = value
-                        };
+                        return new Dimension(DimensionType.Length, value);
                 }
                 while (StringUtils.ASCIIDigits.Contains(input[position]));
             }
 
             if (position >= input.Length)
-                return new Dimension
-                {
-                    type = DimensionType.Length,
-                    value = value
-                };
+                return new Dimension(DimensionType.Length, value);
             else if (input[position] == '%')
-                return new Dimension
-                {
-                    type = DimensionType.Percentage,
-                    value = value
-                };
+                return new Dimension(DimensionType.Percentage, value);
             else
-                return new Dimension
-                {
-                    type = DimensionType.Length,
-                    value = value
-                };
+                return new Dimension(DimensionType.Length, value);
         }
 
         public static List<int> ParseListOfIntegers(string input)
@@ -457,7 +433,7 @@ namespace Aperture.Parser.Common
                         unit = DimensionListPairUnit.Relative;
                 }
             AddToResults:
-                result.Add(new DimensionListPair { number = value, unit = unit });
+                result.Add(new DimensionListPair(value, unit));
             }
 
             return result;

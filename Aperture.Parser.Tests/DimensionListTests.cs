@@ -15,26 +15,10 @@ namespace Aperture.Parser.Tests
             CollectionAssert.AreEqual(
                 new List<DimensionListPair>
                 {
-                    new DimensionListPair
-                    {
-                        number = 50,
-                        unit = DimensionListPairUnit.Percentage
-                    },
-                    new DimensionListPair
-                    {
-                        number = 7,
-                        unit = DimensionListPairUnit.Relative
-                    },
-                    new DimensionListPair
-                    {
-                        number = 20,
-                        unit = DimensionListPairUnit.Absolute
-                    },
-                    new DimensionListPair
-                    {
-                        number = 40,
-                        unit = DimensionListPairUnit.Absolute
-                    }
+                    new DimensionListPair(50, DimensionListPairUnit.Percentage),
+                    new DimensionListPair(7,  DimensionListPairUnit.Relative),
+                    new DimensionListPair(20, DimensionListPairUnit.Absolute),
+                    new DimensionListPair(40, DimensionListPairUnit.Absolute)
                 },
                 NumberUtils.ParseListOfDimensions("50%, 7*, 20, 40")
             );
@@ -46,16 +30,8 @@ namespace Aperture.Parser.Tests
             CollectionAssert.AreEqual(
                 new List<DimensionListPair>
                 {
-                    new DimensionListPair
-                    {
-                        number = 5,
-                        unit = DimensionListPairUnit.Percentage
-                    },
-                    new DimensionListPair
-                    {
-                        number = 7,
-                        unit = DimensionListPairUnit.Relative
-                    }
+                    new DimensionListPair(5, DimensionListPairUnit.Percentage),
+                    new DimensionListPair(7, DimensionListPairUnit.Relative)
                 },
                 NumberUtils.ParseListOfDimensions("5  %, 7  *")
             );
@@ -67,21 +43,9 @@ namespace Aperture.Parser.Tests
             CollectionAssert.AreEqual(
                 new List<DimensionListPair>
                 {
-                    new DimensionListPair
-                    {
-                        number = 7,
-                        unit = DimensionListPairUnit.Absolute
-                    },
-                    new DimensionListPair
-                    {
-                        number = 8,
-                        unit = DimensionListPairUnit.Absolute
-                    },
-                    new DimensionListPair
-                    {
-                        number = 9,
-                        unit = DimensionListPairUnit.Absolute
-                    }
+                    new DimensionListPair(7, DimensionListPairUnit.Absolute),
+                    new DimensionListPair(8, DimensionListPairUnit.Absolute),
+                    new DimensionListPair(9, DimensionListPairUnit.Absolute)
                 },
                 NumberUtils.ParseListOfDimensions(
                     "               7,           8,             9 ")
@@ -91,11 +55,7 @@ namespace Aperture.Parser.Tests
             CollectionAssert.AreEqual(
                 new List<DimensionListPair>
                 {
-                    new DimensionListPair
-                    {
-                        number = 0,
-                        unit = DimensionListPairUnit.Relative
-                    }
+                    new DimensionListPair(0, DimensionListPairUnit.Relative)
                 },
                 NumberUtils.ParseListOfDimensions("  ")
             );
@@ -107,21 +67,9 @@ namespace Aperture.Parser.Tests
             CollectionAssert.AreEqual(
                 new List<DimensionListPair>
                 {
-                    new DimensionListPair
-                    {
-                        number = 1.5d,
-                        unit = DimensionListPairUnit.Absolute
-                    },
-                    new DimensionListPair
-                    {
-                        number = 7.55d,
-                        unit = DimensionListPairUnit.Percentage
-                    },
-                    new DimensionListPair
-                    {
-                        number = 55,
-                        unit = DimensionListPairUnit.Relative
-                    }
+                    new DimensionListPair(1.5d,  DimensionListPairUnit.Absolute),
+                    new DimensionListPair(7.55d, DimensionListPairUnit.Percentage),
+                    new DimensionListPair(55,    DimensionListPairUnit.Relative)
                 },
                 NumberUtils.ParseListOfDimensions("1.5, 7.55%, 55*")
             );

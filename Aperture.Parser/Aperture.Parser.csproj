@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Common\NumberUtils.cs" />
     <Compile Include="Common\StringUtils.cs" />
+    <Compile Include="DataStructures\YearAndMonth.cs" />
     <Compile Include="Exceptions\ParseException.cs" />
     <Compile Include="Exceptions\InvalidDimensionValueException.cs" />
     <Compile Include="Exceptions\InvalidFloatNumberException.cs" />

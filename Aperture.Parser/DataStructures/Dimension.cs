@@ -14,7 +14,13 @@ namespace Aperture.Parser.DataStructures
 
     public struct Dimension
     {
-        public decimal value;
-        public DimensionType type;
+        public Dimension(DimensionType type, decimal value)
+        {
+            Value = value;
+            Type = type;
+        }
+
+        public decimal Value { get; }
+        public DimensionType Type { get; }
     }
 }
