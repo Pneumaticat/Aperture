@@ -5,7 +5,7 @@ using Aperture.Parser.Common;
 namespace Aperture.Parser.Tests
 {
     [TestClass]
-    public class DateUtilsUnitTests
+    public class DateUtilsTests
     {
         [TestMethod]
         public void TestIsValidMonthString()

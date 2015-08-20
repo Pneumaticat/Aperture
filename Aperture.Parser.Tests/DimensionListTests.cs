@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Aperture.Parser.Tests
 {
     [TestClass]
-    public class DimensionListUnitTests
+    public class DimensionListTests
     {
         [TestMethod]
         public void TestDimensionListParsing()

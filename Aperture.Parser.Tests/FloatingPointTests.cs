@@ -6,7 +6,7 @@ using Aperture.Parser.Exceptions;
 namespace Aperture.Parser.Tests
 {
     [TestClass]
-    public class FloatingPointUnitTests
+    public class FloatingPointTests
     {
         [TestMethod]
         [ExpectedException(typeof(InvalidFloatNumberException),

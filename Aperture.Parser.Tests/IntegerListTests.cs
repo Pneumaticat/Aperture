@@ -7,7 +7,7 @@ using Aperture.Parser.Exceptions;
 namespace Aperture.Parser.Tests
 {
     [TestClass]
-    public class IntegerListUnitTests
+    public class IntegerListTests
     {
         [TestMethod]
         public void TestIntegerListParsing()
