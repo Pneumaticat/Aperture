@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\IntegerUtils.cs" />
+    <Compile Include="Common\NumberUtils.cs" />
     <Compile Include="Common\StringUtils.cs" />
     <Compile Include="Exceptions\ParseException.cs" />
     <Compile Include="Exceptions\InvalidDimensionValueException.cs" />

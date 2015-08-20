@@ -17,5 +17,12 @@ namespace Aperture.Parser.Tests
             NumberUtils.ParseFloatingPointNumber("  ");
             NumberUtils.ParseFloatingPointNumber("  E  ");
         }
+
+        [TestMethod]
+        public void TestFloatingPointAccuracy()
+        {
+            Assert.AreEqual(1.0d, NumberUtils.ParseFloatingPointNumber("1.0"));
+            Assert.AreEqual(1.1d, NumberUtils.ParseFloatingPointNumber("1.1"));
+        }
     }
 }
