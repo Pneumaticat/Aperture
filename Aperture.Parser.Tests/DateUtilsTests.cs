@@ -111,5 +111,21 @@ namespace Aperture.Parser.Tests
             Assert.IsNull(DateUtils.ParseDateString("1-01-01"),
                 "Incorrectly handles years with less than 4 characters.");
         }
+
+        [TestMethod]
+        public void TestYearlessDateStringParsing()
+        {
+            Assert.AreEqual(
+                new MonthAndDay(2, 29),
+                DateUtils.ParseYearlessDateString("02-29"));
+            Assert.AreEqual(
+                new MonthAndDay(12, 31),
+                DateUtils.ParseYearlessDateString("12-31"));
+            Assert.IsNull(DateUtils.ParseYearlessDateString("1-1"));
+            Assert.IsNull(DateUtils.ParseYearlessDateString("13-32"));
+            Assert.IsNull(DateUtils.ParseYearlessDateString("11"));
+            Assert.IsNull(DateUtils.ParseYearlessDateString("00-00"));
+            Assert.IsNull(DateUtils.ParseYearlessDateString("     "));
+        }
     }
 }

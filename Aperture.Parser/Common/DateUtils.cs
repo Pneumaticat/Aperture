@@ -9,6 +9,8 @@ namespace Aperture.Parser.Common
 {
     public static class DateUtils
     {
+        public const int ArbitraryLeapYear = 4;
+
         public static int DaysInMonth(int month, int year)
         {
             // 31 if month is 1, 3, 5, 7, 8, 10, or 12; 30 if month is 4, 6, 
@@ -143,6 +145,63 @@ namespace Aperture.Parser.Common
                 return null;
             else
                 return new Date(yam.Value.Year, yam.Value.Month, day);
+        }
+
+        public static MonthAndDay? ParseYearlessDateString(string input)
+        {
+            int position = 0;
+            // these variable names are awesome
+            MonthAndDay? mad = ParseYearlessDateComponent(input, ref position);
+            if (mad == null || position < input.Length)
+                return null;
+            else
+                return mad;
+        }
+
+        public static MonthAndDay? ParseYearlessDateComponent(string input, ref int position)
+        {
+            string hyphens = StringUtils.CollectSequenceOfCharacters(
+                input,
+                ref position,
+                ch => ch == '-');
+            if (hyphens.Length != 0 && hyphens.Length != 2)
+                return null;
+
+            int month;
+            string monthChars = StringUtils.CollectSequenceOfCharacters(
+                input,
+                ref position,
+                ch => StringUtils.ASCIIDigits.Contains(ch));
+
+            if (monthChars.Length != 2)
+                return null;
+            else
+                month = int.Parse(monthChars);
+
+            if (month < 1 || month > 12)
+                return null;
+
+            int maxday = DaysInMonth(month, ArbitraryLeapYear);
+
+            if (position >= input.Length || input[position] != '-')
+                return null;
+            else
+                position++;
+
+            int day;
+            string dayChars = StringUtils.CollectSequenceOfCharacters(
+                input,
+                ref position,
+                ch => StringUtils.ASCIIDigits.Contains(ch));
+            if (dayChars.Length != 2)
+                return null;
+            else
+                day = int.Parse(dayChars);
+
+            if (day < 1 || day > maxday)
+                return null;
+            else
+                return new MonthAndDay(month, day);
         }
     }
 }
