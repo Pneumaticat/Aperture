@@ -163,5 +163,28 @@ namespace Aperture.Parser.Tests
             Assert.IsNull(DateTimeUtils.ParseTimeString(" "));
             Assert.IsNull(DateTimeUtils.ParseTimeString("24-60-60"));
         }
+
+        [TestMethod]
+        public void TestIsValidLocalDateAndTimeString()
+        {
+            Assert.IsTrue(
+                DateTimeUtils.IsValidLocalDateAndTimeString("2001-12-31T00:00:00.000"),
+                "Incorrectly handles standard time string with T separator.");
+            Assert.IsTrue(
+                DateTimeUtils.IsValidLocalDateAndTimeString("2001-12-31 00:00:00"),
+                "Incorrectly handles standard timestring with space separator.");
+            Assert.IsFalse(
+                DateTimeUtils.IsValidLocalDateAndTimeString("0000-12-31T00:00:00"),
+                "Incorrectly allows invalid date string.");
+            Assert.IsFalse(
+                DateTimeUtils.IsValidLocalDateAndTimeString("2001-12-31T24:60:60.9999"),
+                "Incorrectly allows invalid time string.");
+            Assert.IsFalse(
+                DateTimeUtils.IsValidLocalDateAndTimeString("2001-12-31-00:00:00"),
+                "Incorrectly accepts invalid date-time separator.");
+            Assert.IsFalse(
+                DateTimeUtils.IsValidLocalDateAndTimeString("    "),
+                "Incorrectly allows only-whitespace string.");
+        }
     }
 }
