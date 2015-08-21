@@ -129,6 +129,22 @@ namespace Aperture.Parser.Tests
         }
 
         [TestMethod]
+        public void TestIsValidTimeString()
+        {
+            Assert.IsFalse(
+                DateTimeUtils.IsValidTimeString("23:59:00.0151"),
+                "Too precise: seconds in time strings can only have " +
+                "3 digits after the decimal point.");
+            Assert.IsFalse(
+                DateTimeUtils.IsValidTimeString(" 07: 55: 07 .886"),
+                "Incorrectly allows whitespace.");
+            Assert.IsTrue(DateTimeUtils.IsValidTimeString("23:59:59.01"),
+                "Incorrectly detects even a standard time string as invalid.");
+            Assert.IsTrue(DateTimeUtils.IsValidTimeString("00:00:00"));
+            Assert.IsFalse(DateTimeUtils.IsValidTimeString("       "));
+        }
+
+        [TestMethod]
         public void TestTimeStringParsing()
         {
             Assert.AreEqual(

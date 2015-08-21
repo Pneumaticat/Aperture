@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Aperture.Parser.Common
@@ -10,6 +11,9 @@ namespace Aperture.Parser.Common
     public static class DateTimeUtils
     {
         public const int ArbitraryLeapYear = 4;
+
+        private static readonly Regex timeStringRegex = new Regex(
+            @"^(?:0[0-9]|1[0-9]|2[0-3]):(?:[0-5][0-9])(?::[0-5][0-9](?:\.[0-9][0-9]?[0-9]?)?)?$");
 
         public static int DaysInMonth(int month, int year)
         {
@@ -202,6 +206,17 @@ namespace Aperture.Parser.Common
                 return null;
             else
                 return new MonthAndDay(month, day);
+        }
+
+        /// <summary>
+        /// Uses a regex to determine whether or not a time string is valid.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsValidTimeString(string input)
+        {
+            // Uses a regex to simulate what the spec says - should be fine.
+            return timeStringRegex.IsMatch(input);
         }
 
         public static Time? ParseTimeString(string input)
