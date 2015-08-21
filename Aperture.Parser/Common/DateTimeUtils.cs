@@ -314,7 +314,7 @@ namespace Aperture.Parser.Common
 
         public static bool IsValidLocalDateAndTimeString(string input)
         {
-            string[] items = input.Split(new char[] { 'T', ' ' });
+            string[] items = input.Split('T', ' ');
             // If first half of string split by T/space is valid date string 
             // and second half is time string, it is valid.
             // Not really what they meant, I don't think, with the splitting,
