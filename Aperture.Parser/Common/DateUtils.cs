@@ -9,7 +9,40 @@ namespace Aperture.Parser.Common
 {
     public static class DateUtils
     {
-		public static bool IsValidMonthString(string input)
+        public static int DaysInMonth(int month, int year)
+        {
+            // 31 if month is 1, 3, 5, 7, 8, 10, or 12; 30 if month is 4, 6, 
+            // 9, or 11; 29 if month is 2 and year is a number divisible by 
+            // 400, or if year is a number divisible by 4 but not by 100; and 
+            // 28 otherwise.
+            switch (month)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    return 31;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    return 30;
+                case 2:
+                    if (year % 400 == 0 ||
+                        (year % 4 == 0 && year % 100 != 0))
+                        return 29;
+                    else
+                        return 28;
+                default:
+                    throw new ArgumentOutOfRangeException(
+                        nameof(month), "Month must be between 1 and 12.");
+            }
+        }
+
+        public static bool IsValidMonthString(string input)
         {
             return ParseMonthString(input) != null;
         }
@@ -68,6 +101,48 @@ namespace Aperture.Parser.Common
                 return null;
             else
                 return new YearAndMonth(year, month);
+        }
+
+        public static bool IsValidDateString(string input)
+        {
+            return ParseDateString(input) != null;
+        }
+
+        public static Date? ParseDateString(string input)
+        {
+            int position = 0;
+            Date? date = ParseDateComponent(input, ref position);
+            if (date == null || position < input.Length)
+                return null;
+            else
+                return date;
+        }
+
+        public static Date? ParseDateComponent(string input, ref int position)
+        {
+            YearAndMonth? yam = ParseMonthComponent(input, ref position);
+            if (yam == null)
+                return null;
+
+            int maxday = DaysInMonth(yam.Value.Month, yam.Value.Year);
+            if (position >= input.Length || input[position] != '-')
+                return null;
+            else
+                position++;
+
+            int day;
+            string dayChars = StringUtils.CollectSequenceOfCharacters(input, ref position,
+                ch => StringUtils.ASCIIDigits.Contains(ch));
+
+            if (dayChars.Length != 2)
+                return null;
+            else
+                day = int.Parse(dayChars);
+
+            if (day < 1 || day > maxday)
+                return null;
+            else
+                return new Date(yam.Value.Year, yam.Value.Month, day);
         }
     }
 }

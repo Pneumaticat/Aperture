@@ -62,5 +62,54 @@ namespace Aperture.Parser.Tests
             Assert.IsNull(DateUtils.ParseMonthString("       "),
                 "Incorrectly handles strings with only whitespace.");
         }
+
+        [TestMethod]
+        public void TestLeapYearHandling()
+        {
+            // Leap years occur every 4 years...
+            Assert.AreEqual(29, DateUtils.DaysInMonth(2, 2004));
+            // Except every century, when it is skipped...
+            Assert.AreEqual(28, DateUtils.DaysInMonth(2, 2100));
+            // Unless the century is divisible by 4, when it isn't.
+            Assert.AreEqual(29, DateUtils.DaysInMonth(2, 2000));
+            Assert.AreEqual(29, DateUtils.DaysInMonth(2, 1600));
+        }
+
+        [TestMethod]
+        public void TestIsValidDateString()
+        {
+            Assert.AreEqual(true, DateUtils.IsValidDateString("2000-12-01"));
+            Assert.AreEqual(true, DateUtils.IsValidDateString("2000-01-01"));
+            Assert.AreEqual(true, DateUtils.IsValidDateString("102000-05-01"),
+                "Cannot handle year strings longer than 4 digits.");
+            Assert.AreEqual(false, DateUtils.IsValidDateString("0000-01-01"),
+                "Year string must be 1 or greater.");
+            Assert.AreEqual(false, DateUtils.IsValidDateString("200011-14"),
+                "Accepts year and month string without hyphen in between.");
+            Assert.AreEqual(false, DateUtils.IsValidDateString("2000-17-01"),
+                "Accepts month greater than 12.");
+            Assert.AreEqual(false, DateUtils.IsValidDateString("2000-00-01"),
+                "Accepts month string less than 1.");
+            Assert.AreEqual(false, DateUtils.IsValidDateString("2000-01AAAAAA"));
+            // Whitespace handling
+            Assert.AreEqual(false, DateUtils.IsValidDateString(""));
+            Assert.AreEqual(false, DateUtils.IsValidDateString("   "));
+            Assert.AreEqual(false, DateUtils.IsValidDateString("2000-01"));
+            Assert.AreEqual(false, DateUtils.IsValidDateString("2000-01-00"),
+                "Incorrectly accepts days less than 1.");
+        }
+
+        [TestMethod]
+        public void TestDateStringParsing()
+        {
+            Assert.AreEqual(new Date(2001, 12, 31), DateUtils.ParseDateString("2001-12-31"));
+            // No February 29th on century boundaries!
+            Assert.IsNull(DateUtils.ParseDateString("2100-02-29"));
+            Assert.AreEqual(new Date(10500, 1, 1), DateUtils.ParseDateString("10500-01-01"));
+            Assert.IsNull(DateUtils.ParseDateString("2000-1-1"),
+                "Incorrectly handles 0-padding.");
+            Assert.IsNull(DateUtils.ParseDateString("1-01-01"),
+                "Incorrectly handles years with less than 4 characters.");
+        }
     }
 }
