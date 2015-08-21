@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aperture.Parser.Common
 {
-    public static class DateUtils
+    public static class DateTimeUtils
     {
         public const int ArbitraryLeapYear = 4;
 

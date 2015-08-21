@@ -44,6 +44,7 @@
     <Compile Include="Common\StringUtils.cs" />
     <Compile Include="DataStructures\MonthAndDay.cs" />
     <Compile Include="DataStructures\Date.cs" />
+    <Compile Include="DataStructures\Time.cs" />
     <Compile Include="DataStructures\YearAndMonth.cs" />
     <Compile Include="Exceptions\ParseException.cs" />
     <Compile Include="Exceptions\InvalidDimensionValueException.cs" />
@@ -56,7 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\DateUtils.cs" />
+    <Compile Include="Common\DateTimeUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

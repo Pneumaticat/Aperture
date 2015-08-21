@@ -19,7 +19,7 @@ namespace Aperture.Parser.DataStructures
 
             // We don't know the year, so just always accept leap days, 
             // using any arbitrary leap year.
-            Day = DateUtils.DaysInMonth(month, DateUtils.ArbitraryLeapYear);
+            Day = DateTimeUtils.DaysInMonth(month, DateTimeUtils.ArbitraryLeapYear);
         }
         public int Month { get; }
         public int Day { get; }
