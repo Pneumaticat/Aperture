@@ -12,8 +12,15 @@ namespace Aperture.Parser.Common
     {
         public const int ArbitraryLeapYear = 4;
 
+        /// <summary>
+        /// Group 1: Hours
+        /// Group 2: Minutes
+        /// Group 3: Seconds
+        /// Group 4: Fractional part of seconds (may be empty, in which it is 
+        /// .000)
+        /// </summary>
         private static readonly Regex timeStringRegex = new Regex(
-            @"^(?:0[0-9]|1[0-9]|2[0-3]):(?:[0-5][0-9])(?::[0-5][0-9](?:\.[0-9][0-9]?[0-9]?)?)?$");
+            @"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])(?::([0-5][0-9])(?:\.([0-9][0-9]?[0-9]?))?)?$");
 
         public static int DaysInMonth(int month, int year)
         {
