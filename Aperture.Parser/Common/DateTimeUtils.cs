@@ -203,5 +203,91 @@ namespace Aperture.Parser.Common
             else
                 return new MonthAndDay(month, day);
         }
+
+        public static Time? ParseTimeString(string input)
+        {
+            int position = 0;
+            Time? time = ParseTimeComponent(input, ref position);
+            if (time == null || position < input.Length)
+                return null;
+            else
+                return time;
+        }
+
+        public static Time? ParseTimeComponent(string input, ref int position)
+        {
+            int hour;
+            string hourChars = StringUtils.CollectSequenceOfCharacters(
+                input,
+                ref position,
+                ch => StringUtils.ASCIIDigits.Contains(ch));
+            if (hourChars.Length != 2)
+                return null;
+            else
+                hour = int.Parse(hourChars);
+
+            if (hour < 0 || hour > 23)
+                return null;
+
+            if (position >= input.Length || input[position] != ':')
+                return null;
+            else
+                position++;
+
+            int minute;
+            string minuteChars = StringUtils.CollectSequenceOfCharacters(
+                input,
+                ref position,
+                ch => StringUtils.ASCIIDigits.Contains(ch));
+            if (minuteChars.Length != 2)
+                return null;
+            else
+                minute = int.Parse(minuteChars);
+
+            if (minute < 0 || minute > 59)
+                return null;
+
+            string second = "0";
+            
+            if (position < input.Length && input[position] == ':')
+            {
+                position++;
+                // If position is past the end of input or is at the last 
+                // character of input, or either of the next two characters 
+                // are not ASCII digits, fail.
+                if (position >= input.Length ||
+                    position == input.Length - 1 ||
+                    (!StringUtils.ASCIIDigits.Contains(input[position]) ||
+                     !StringUtils.ASCIIDigits.Contains(input[position + 1])))
+                    return null;
+
+                string maybeSecondChars = StringUtils.CollectSequenceOfCharacters(
+                    input,
+                    ref position,
+                    ch => StringUtils.ASCIIDigits.Contains(ch) || ch == '.');
+
+                // If the collected sequence is three characters long, or if 
+                // it is longer than three characters long and the third 
+                // character is not a period, or if it has more than one 
+                // period, then fail.
+                if (maybeSecondChars.Length == 3 ||
+                    (maybeSecondChars.Length > 3 && maybeSecondChars[2] != '.') ||
+                    maybeSecondChars.Count(c => c == '.') > 1)
+                    return null;
+                else
+                    second = maybeSecondChars;
+            }
+
+            // TODO: Should this be a double? The HTML spec says that it...
+            // should be a base-10 integer, potentially with a fractional 
+            // part. ...So, a a floating-point? Also, should the default 
+            // double.Parse be used, or the homemade 
+            // NumberUtils.ParseFloatingPointNumber? So many questions.
+            double secondNum = NumberUtils.ParseFloatingPointNumber(second);
+            if (secondNum < 0 || secondNum > 59)
+                return null;
+            else
+                return new Time(hour, minute, secondNum);
+        }
     }
 }

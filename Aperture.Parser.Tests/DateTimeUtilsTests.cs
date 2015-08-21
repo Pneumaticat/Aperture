@@ -127,5 +127,25 @@ namespace Aperture.Parser.Tests
             Assert.IsNull(DateTimeUtils.ParseYearlessDateString("00-00"));
             Assert.IsNull(DateTimeUtils.ParseYearlessDateString("     "));
         }
+
+        [TestMethod]
+        public void TestTimeStringParsing()
+        {
+            Assert.AreEqual(
+                new Time(23, 59, 59),
+                DateTimeUtils.ParseTimeString("23:59:59"));
+            Assert.AreEqual(
+                new Time(23, 59, 0),
+                DateTimeUtils.ParseTimeString("23:59"),
+                "Does not handle time string without seconds.");
+            Assert.AreEqual(
+                new Time(23, 59, 0.015d),
+                DateTimeUtils.ParseTimeString("23:59:00.015"),
+                "Does not handle fractional seconds.");
+            Assert.IsNull(DateTimeUtils.ParseTimeString("23:59:0.015"),
+                "Incorrectly handles a non-0-padded fractional second.");
+            Assert.IsNull(DateTimeUtils.ParseTimeString(" "));
+            Assert.IsNull(DateTimeUtils.ParseTimeString("24-60-60"));
+        }
     }
 }
