@@ -113,7 +113,7 @@ namespace Aperture.Parser.HTML.DatesAndTimes
             // part. ...So, a a floating-point? Also, should the default 
             // double.Parse be used, or the homemade 
             // NumberUtils.ParseFloatingPointNumber? So many questions.
-            double secondNum = NumberParser.ParseFloatingPointNumber(second);
+            double secondNum = FloatingPointNumbers.ParseFloatingPointNumber(second);
             if (secondNum < 0 || secondNum > 59)
                 return null;
             else

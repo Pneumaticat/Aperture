@@ -45,7 +45,12 @@
     <Compile Include="HTML\DatesAndTimes\DateParser.cs" />
     <Compile Include="HTML\DatesAndTimes\LocalDateAndTimeParser.cs" />
     <Compile Include="HTML\DatesAndTimes\MonthParser.cs" />
-    <Compile Include="HTML\Numbers\NumberParser.cs" />
+    <Compile Include="HTML\Numbers\FloatingPointNumbers.cs" />
+    <Compile Include="HTML\Numbers\ListsOfDimensions.cs" />
+    <Compile Include="HTML\Numbers\ListsOfIntegers.cs" />
+    <Compile Include="HTML\Numbers\NonNegativeIntegers.cs" />
+    <Compile Include="HTML\Numbers\PercentagesAndLengths.cs" />
+    <Compile Include="HTML\Numbers\SignedIntegers.cs" />
     <Compile Include="HTML\ParserIdioms.cs" />
     <Compile Include="HTML\StringComparisons.cs" />
     <Compile Include="HTML\DatesAndTimes\TimeParser.cs" />
