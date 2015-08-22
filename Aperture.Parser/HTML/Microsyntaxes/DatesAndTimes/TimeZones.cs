@@ -83,5 +83,83 @@ namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
                     return false;
             }
         }
+
+        public static TimeZoneOffset? ParseTimeZoneOffsetString(string input)
+        {
+            int position = 0;
+            TimeZoneOffset? tz = ParseTimeZoneOffsetComponent(input, ref position);
+            if (position < input.Length || tz == null)
+                return null;
+            else
+                return tz;
+        }
+
+        public static TimeZoneOffset? ParseTimeZoneOffsetComponent(string input, ref int position)
+        {
+            int hours;
+            int minutes;
+
+            if (input[position] == 'Z')
+            {
+                hours = 0;
+                minutes = 0;
+                position++;
+            }
+            else if (input[position] == '+' || input[position] == '-')
+            {
+                string sign;
+                if (input[position] == '+')
+                    sign = "positive";
+                else
+                    sign = "negative";
+
+                position++;
+
+                string s = ParserIdioms.CollectSequenceOfCharacters(
+                    input, ref position,
+                    ch => ParserIdioms.ASCIIDigits.Contains(ch));
+
+                if (s.Length == 2)
+                {
+                    hours = int.Parse(s);
+
+                    if (position >= input.Length || input[position] != ':')
+                        return null;
+                    else
+                        position++;
+
+                    string minutesChars = ParserIdioms.CollectSequenceOfCharacters(
+                        input, ref position,
+                        ch => ParserIdioms.ASCIIDigits.Contains(ch));
+                    if (minutesChars.Length != 2)
+                        return null;
+                    else
+                        minutes = int.Parse(minutesChars);
+                }
+                else if (s.Length == 4)
+                {
+                    hours = int.Parse(s.Substring(0, 2));
+                    minutes = int.Parse(s.Substring(2, 2));
+                }
+                else
+                    return null;
+
+                if (hours < 0 || hours > 23)
+                    return null;
+
+                if (sign == "negative")
+                    hours = 0 - hours;
+
+                if (minutes < 0 || minutes > 59)
+                    return null;
+
+                if (sign == "negative")
+                    minutes = 0 - minutes;
+            }
+            else
+                return null;
+
+            return new TimeZoneOffset(hours, minutes);
+        }
     }
 }

@@ -35,5 +35,27 @@ namespace Aperture.Parser.Tests
             // IsValidTimeZoneOffsetString will reject the -24:60 offset string 
             // anyway because it does not match `new TimeZoneOffset(-23, -59)`.
         }
+
+        [TestMethod]
+        public void TestParseTimeZoneOffsetString()
+        {
+            Assert.AreEqual(
+                new TimeZoneOffset(1, 00),
+                TimeZones.ParseTimeZoneOffsetString("+01:00"));
+            Assert.AreEqual(
+                new TimeZoneOffset(-1, -00),
+                TimeZones.ParseTimeZoneOffsetString("-01:00"),
+                "Cannot handle negative offsets.");
+            Assert.AreEqual(
+                new TimeZoneOffset(0, 00),
+                TimeZones.ParseTimeZoneOffsetString("Z"),
+                "Cannot handle UTC represented as 'Z'.");
+            Assert.AreEqual(
+                new TimeZoneOffset(0, 00),
+                TimeZones.ParseTimeZoneOffsetString("+0000"),
+                "Cannot handle offsets without a separating colon.");
+            Assert.IsNull(TimeZones.ParseTimeZoneOffsetString("+1:00"),
+                "Incorrectly handles non-zero-padded hour.");
+        }
     }
 }
