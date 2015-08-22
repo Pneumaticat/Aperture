@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Aperture.Parser.Common;
+using Aperture.Parser.Miscellaneous;
 
 namespace Aperture.Parser.Tests
 {

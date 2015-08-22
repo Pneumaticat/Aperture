@@ -40,13 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\DateParser.cs" />
-    <Compile Include="Common\LocalDateAndTimeParser.cs" />
-    <Compile Include="Common\MonthParser.cs" />
-    <Compile Include="Common\NumberUtils.cs" />
-    <Compile Include="Common\StringUtils.cs" />
-    <Compile Include="Common\TimeParser.cs" />
-    <Compile Include="Common\YearlessDateParser.cs" />
+    <Compile Include="Miscellaneous\DateParser.cs" />
+    <Compile Include="Miscellaneous\LocalDateAndTimeParser.cs" />
+    <Compile Include="Miscellaneous\MonthParser.cs" />
+    <Compile Include="Miscellaneous\NumberUtils.cs" />
+    <Compile Include="Miscellaneous\StringUtils.cs" />
+    <Compile Include="Miscellaneous\TimeParser.cs" />
+    <Compile Include="Miscellaneous\YearlessDateParser.cs" />
     <Compile Include="DataStructures\MonthAndDay.cs" />
     <Compile Include="DataStructures\Date.cs" />
     <Compile Include="DataStructures\Time.cs" />
@@ -62,7 +62,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\DateTimeUtils.cs" />
+    <Compile Include="Miscellaneous\DateTimeUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Aperture.Parser.Common;
+using Aperture.Parser.Miscellaneous;
 using Aperture.Parser.Exceptions;
 
 namespace Aperture.Parser.Tests

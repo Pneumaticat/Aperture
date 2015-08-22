@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.Common
+namespace Aperture.Parser.Miscellaneous
 {
     public static class MonthParser
     {
