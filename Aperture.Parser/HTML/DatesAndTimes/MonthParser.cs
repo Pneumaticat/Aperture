@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.Miscellaneous
+namespace Aperture.Parser.HTML.DatesAndTimes
 {
     public static class MonthParser
     {
@@ -35,10 +35,10 @@ namespace Aperture.Parser.Miscellaneous
         public static YearAndMonth? ParseMonthComponent(string input, ref int position)
         {
             int year;
-            string yearChars = StringParser.CollectSequenceOfCharacters(
+            string yearChars = ParserIdioms.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringParser.ASCIIDigits.Contains(ch));
+                ch => ParserIdioms.ASCIIDigits.Contains(ch));
 
             if (yearChars.Length < 4)
                 return null;
@@ -55,10 +55,10 @@ namespace Aperture.Parser.Miscellaneous
                 position++;
 
             int month;
-            string monthChars = StringParser.CollectSequenceOfCharacters(
+            string monthChars = ParserIdioms.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringParser.ASCIIDigits.Contains(ch));
+                ch => ParserIdioms.ASCIIDigits.Contains(ch));
             if (monthChars.Length != 2)
                 return null;
             else

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.Miscellaneous
+namespace Aperture.Parser.HTML.DatesAndTimes
 {
     public static class DateParser
     {
@@ -37,8 +37,8 @@ namespace Aperture.Parser.Miscellaneous
                 position++;
 
             int day;
-            string dayChars = StringParser.CollectSequenceOfCharacters(input, ref position,
-                ch => StringParser.ASCIIDigits.Contains(ch));
+            string dayChars = ParserIdioms.CollectSequenceOfCharacters(input, ref position,
+                ch => ParserIdioms.ASCIIDigits.Contains(ch));
 
             if (dayChars.Length != 2)
                 return null;

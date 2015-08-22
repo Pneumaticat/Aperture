@@ -1,87 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
-namespace Aperture.Parser.Miscellaneous
+namespace Aperture.Parser.HTML
 {
-    public static class StringParser
+    public static class ParserIdioms
     {
-        // HTML spec 2.3 Case-sensitivity and string comparisons
-        
-        public static bool CompareCaseSensitive(string str1, string str2)
-        {
-            return str1 == str2;
-        }
-        /// <summary>
-        /// Compares strings, where A-Z == a-z.
-        /// </summary>
-        public static bool CompareASCIICaseInsensitive(string str1, string str2)
-        {
-            return ConvertToASCIILowercase(str1) == ConvertToASCIILowercase(str2);
-        }
-
-        /// <summary>
-        /// Unicode string comparing, with no regard for capitalization.
-        /// </summary>
-        public static bool CompareCompatibilityCaseless(string str1, string str2)
-        {
-            // Unicode spec version 7.0, page 158, D146
-            // TODO: ToLowerInvariant() may not match the spec's toCasefold method exactly.
-            return str1.Normalize(NormalizationForm.FormD)
-                .ToLowerInvariant()
-                .Normalize(NormalizationForm.FormKD)
-                .ToLowerInvariant()
-                .Normalize(NormalizationForm.FormKD)
-
-                ==
-
-                str2.Normalize(NormalizationForm.FormD)
-                .ToLowerInvariant()
-                .Normalize(NormalizationForm.FormKD)
-                .ToLowerInvariant()
-                .Normalize(NormalizationForm.FormKD);
-        }
-
-        /// <summary>
-        /// Converts a-z to A-Z.
-        /// </summary>
-        public static string ConvertToASCIIUppercase(string input)
-        {
-            char[] inputArr = input.ToCharArray();
-            for (int i = 0; i < inputArr.Length; i++)
-            {
-                if (LowercaseASCIILetters.Contains(inputArr[i]))
-                {
-                    int charIndex = Array.IndexOf(LowercaseASCIILetters, inputArr[i]);
-                    inputArr[i] = UppercaseASCIILetters[charIndex];
-                }
-            }
-
-            return new string(inputArr);
-        }
-
-        /// <summary>
-        /// Converts A-Z to a-z.
-        /// </summary>
-        public static string ConvertToASCIILowercase(string input)
-        {
-            char[] inputArr = input.ToCharArray();
-            for (int i = 0; i < inputArr.Length; i++)
-            {
-                if (UppercaseASCIILetters.Contains(inputArr[i]))
-                {
-                    int charIndex = Array.IndexOf(UppercaseASCIILetters, inputArr[i]);
-                    inputArr[i] = LowercaseASCIILetters[charIndex];
-                }
-            }
-
-            return new string(inputArr);
-        }
-
         // HTML spec 2.4.1 Common parser idioms
+        // https://html.spec.whatwg.org/multipage/infrastructure.html#common-parser-idioms
 
         /// <summary>
         /// White space characters, for the purpose of HTML.
@@ -150,7 +78,7 @@ namespace Aperture.Parser.Miscellaneous
             "0123456789ABCDEF".ToCharArray();
         public static readonly char[] LowercaseASCIIHexDigits =
             "0123456789abcdef".ToCharArray();
-        
+
         /// <summary>
         /// Collects a seqence of characters for as long as <em>predicate</em> 
         /// is true.
@@ -262,17 +190,6 @@ namespace Aperture.Parser.Miscellaneous
             }
 
             return tokens.ToArray();
-        }
-
-        // 2.4.8 Comma-separated tokens
-        public static string[] SplitStringOnCommas(string input)
-        {
-            // Not exactly following the spec, but the end result should be 
-            // the same.
-            return (from str
-                    in input.Split(',')
-                    select str.Trim(SpaceCharacters)
-                   ).ToArray();
         }
     }
 }

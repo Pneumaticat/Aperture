@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.Miscellaneous
+namespace Aperture.Parser.HTML.DatesAndTimes
 {
     public static class YearlessDateParser
     {
@@ -22,7 +22,7 @@ namespace Aperture.Parser.Miscellaneous
 
         public static MonthAndDay? ParseYearlessDateComponent(string input, ref int position)
         {
-            string hyphens = StringParser.CollectSequenceOfCharacters(
+            string hyphens = ParserIdioms.CollectSequenceOfCharacters(
                 input,
                 ref position,
                 ch => ch == '-');
@@ -30,10 +30,10 @@ namespace Aperture.Parser.Miscellaneous
                 return null;
 
             int month;
-            string monthChars = StringParser.CollectSequenceOfCharacters(
+            string monthChars = ParserIdioms.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringParser.ASCIIDigits.Contains(ch));
+                ch => ParserIdioms.ASCIIDigits.Contains(ch));
 
             if (monthChars.Length != 2)
                 return null;
@@ -51,10 +51,10 @@ namespace Aperture.Parser.Miscellaneous
                 position++;
 
             int day;
-            string dayChars = StringParser.CollectSequenceOfCharacters(
+            string dayChars = ParserIdioms.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringParser.ASCIIDigits.Contains(ch));
+                ch => ParserIdioms.ASCIIDigits.Contains(ch));
             if (dayChars.Length != 2)
                 return null;
             else

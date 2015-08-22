@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Aperture.Parser.Miscellaneous;
+using Aperture.Parser.HTML;
 using Aperture.Parser.DataStructures;
 using System.Collections.Generic;
+using Aperture.Parser.HTML.Numbers;
 
 namespace Aperture.Parser.Tests
 {

@@ -1,4 +1,5 @@
 ﻿using Aperture.Parser.DataStructures;
+using Aperture.Parser.HTML.Numbers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.Miscellaneous
+namespace Aperture.Parser.HTML.DatesAndTimes
 {
     public static class TimeParser
     {
@@ -46,10 +47,10 @@ namespace Aperture.Parser.Miscellaneous
         public static Time? ParseTimeComponent(string input, ref int position)
         {
             int hour;
-            string hourChars = StringParser.CollectSequenceOfCharacters(
+            string hourChars = ParserIdioms.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringParser.ASCIIDigits.Contains(ch));
+                ch => ParserIdioms.ASCIIDigits.Contains(ch));
             if (hourChars.Length != 2)
                 return null;
             else
@@ -64,10 +65,10 @@ namespace Aperture.Parser.Miscellaneous
                 position++;
 
             int minute;
-            string minuteChars = StringParser.CollectSequenceOfCharacters(
+            string minuteChars = ParserIdioms.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringParser.ASCIIDigits.Contains(ch));
+                ch => ParserIdioms.ASCIIDigits.Contains(ch));
             if (minuteChars.Length != 2)
                 return null;
             else
@@ -86,14 +87,14 @@ namespace Aperture.Parser.Miscellaneous
                 // are not ASCII digits, fail.
                 if (position >= input.Length ||
                     position == input.Length - 1 ||
-                    (!StringParser.ASCIIDigits.Contains(input[position]) ||
-                     !StringParser.ASCIIDigits.Contains(input[position + 1])))
+                    (!ParserIdioms.ASCIIDigits.Contains(input[position]) ||
+                     !ParserIdioms.ASCIIDigits.Contains(input[position + 1])))
                     return null;
 
-                string maybeSecondChars = StringParser.CollectSequenceOfCharacters(
+                string maybeSecondChars = ParserIdioms.CollectSequenceOfCharacters(
                     input,
                     ref position,
-                    ch => StringParser.ASCIIDigits.Contains(ch) || ch == '.');
+                    ch => ParserIdioms.ASCIIDigits.Contains(ch) || ch == '.');
 
                 // If the collected sequence is three characters long, or if 
                 // it is longer than three characters long and the third 

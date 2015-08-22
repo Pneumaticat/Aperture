@@ -41,14 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataStructures\TimeZoneOffset.cs" />
-    <Compile Include="Miscellaneous\DateParser.cs" />
-    <Compile Include="Miscellaneous\LocalDateAndTimeParser.cs" />
-    <Compile Include="Miscellaneous\MonthParser.cs" />
-    <Compile Include="Miscellaneous\NumberParser.cs" />
-    <Compile Include="Miscellaneous\StringParser.cs" />
-    <Compile Include="Miscellaneous\TimeParser.cs" />
-    <Compile Include="Miscellaneous\TimeZoneParser.cs" />
-    <Compile Include="Miscellaneous\YearlessDateParser.cs" />
+    <Compile Include="HTML\CommaSeparatedTokens.cs" />
+    <Compile Include="HTML\DatesAndTimes\DateParser.cs" />
+    <Compile Include="HTML\DatesAndTimes\LocalDateAndTimeParser.cs" />
+    <Compile Include="HTML\DatesAndTimes\MonthParser.cs" />
+    <Compile Include="HTML\Numbers\NumberParser.cs" />
+    <Compile Include="HTML\ParserIdioms.cs" />
+    <Compile Include="HTML\StringComparisons.cs" />
+    <Compile Include="HTML\DatesAndTimes\TimeParser.cs" />
+    <Compile Include="HTML\DatesAndTimes\TimeZoneParser.cs" />
+    <Compile Include="HTML\DatesAndTimes\YearlessDateParser.cs" />
     <Compile Include="DataStructures\MonthAndDay.cs" />
     <Compile Include="DataStructures\Date.cs" />
     <Compile Include="DataStructures\Time.cs" />
@@ -64,7 +66,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Miscellaneous\DateTimeUtils.cs" />
+    <Compile Include="HTML\DatesAndTimes\DateTimeUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Aperture.Parser.Miscellaneous;
+using Aperture.Parser.HTML;
 
 namespace Aperture.Parser.Tests
 {
@@ -17,7 +17,7 @@ namespace Aperture.Parser.Tests
         {
             int position = 0;
             string testStr = "         ";
-            StringParser.SkipWhitespace(testStr, ref position);
+            ParserIdioms.SkipWhitespace(testStr, ref position);
             Assert.IsTrue(position >= testStr.Length);
         }
 
@@ -26,7 +26,7 @@ namespace Aperture.Parser.Tests
         {
             int position = 0;
             string testStr = "        x";
-            StringParser.SkipWhitespace(testStr, ref position);
+            ParserIdioms.SkipWhitespace(testStr, ref position);
             Assert.AreEqual('x', testStr[position]);
         }
 
@@ -34,7 +34,7 @@ namespace Aperture.Parser.Tests
         public void TestCollectSequenceOfChars()
         {
             int position = 0;
-            string Xes = StringParser.CollectSequenceOfCharacters(
+            string Xes = ParserIdioms.CollectSequenceOfCharacters(
                 "xxxxx other characters that don't really matter...",
                 ref position,
                 ch => ch == 'x');
@@ -48,7 +48,7 @@ namespace Aperture.Parser.Tests
         {
             int position = 5;
             const string testStr = "01234xxx";
-            string collected = StringParser.CollectSequenceOfCharacters(
+            string collected = ParserIdioms.CollectSequenceOfCharacters(
                 testStr,
                 ref position,
                 ch => ch == 'x');
@@ -62,31 +62,31 @@ namespace Aperture.Parser.Tests
         [TestMethod]
         public void TestASCIICaseInsensitiveCompare()
         {
-            Assert.IsTrue( StringParser.CompareASCIICaseInsensitive("AAAA", "aaaa"));
+            Assert.IsTrue( StringComparisons.CompareASCIICaseInsensitive("AAAA", "aaaa"));
             // Unicode characters with different capitalization shouldn't 
             // match using ascii comparing
-            Assert.IsFalse(StringParser.CompareASCIICaseInsensitive("AAAAÆ", "aaaaæ"));
+            Assert.IsFalse(StringComparisons.CompareASCIICaseInsensitive("AAAAÆ", "aaaaæ"));
         }
 
         [TestMethod]
         public void TestCompatibilityCaselessCompare()
         {
-            Assert.IsTrue(StringParser.CompareCompatibilityCaseless("Æ", "æ"));
+            Assert.IsTrue(StringComparisons.CompareCompatibilityCaseless("Æ", "æ"));
             // Compare composed e + ◌́ with é for equality. Should be equal if 
             // normalization is correctly performed.
-            Assert.IsTrue(StringParser.CompareCompatibilityCaseless(
+            Assert.IsTrue(StringComparisons.CompareCompatibilityCaseless(
                 "\u0065\u0301", "\u00e9"));
         }
 
         [TestMethod]
         public void TestConvertToASCIIUpperAndLowercase()
         {
-            Assert.AreEqual("AAA", StringParser.ConvertToASCIIUppercase("aAa"));
-            Assert.AreEqual("aaa", StringParser.ConvertToASCIILowercase("aAa"));
+            Assert.AreEqual("AAA", StringComparisons.ConvertToASCIIUppercase("aAa"));
+            Assert.AreEqual("aaa", StringComparisons.ConvertToASCIILowercase("aAa"));
             // Unicode characters should not be able to be lowercased or 
             // uppercased with this method.
-            Assert.AreNotEqual("aæa", StringParser.ConvertToASCIILowercase("aÆa"));
-            Assert.AreNotEqual("AÆA", StringParser.ConvertToASCIIUppercase("aæa"));
+            Assert.AreNotEqual("aæa", StringComparisons.ConvertToASCIILowercase("aÆa"));
+            Assert.AreNotEqual("AÆA", StringComparisons.ConvertToASCIIUppercase("aæa"));
         }
 
         [TestMethod]
@@ -94,10 +94,10 @@ namespace Aperture.Parser.Tests
         {
             CollectionAssert.AreEqual(
                 new string[] { "x", "y", "c", "d" },
-                StringParser.StrictlySplitString('|', "x|y|c|d"));
+                ParserIdioms.StrictlySplitString('|', "x|y|c|d"));
             CollectionAssert.AreEqual(
                 new string[] { "csdf", "hi", "17" },
-                StringParser.SplitStringOnCommas("  csdf, hi ,   17 ")
+                CommaSeparatedTokens.SplitStringOnCommas("  csdf, hi ,   17 ")
             );
         }
 
@@ -106,7 +106,7 @@ namespace Aperture.Parser.Tests
         {
             Assert.AreEqual(
                 "kittens are awesome",
-                StringParser.StripAndCollapseWhitespace(" kittens    are \r\n awesome\t")
+                ParserIdioms.StripAndCollapseWhitespace(" kittens    are \r\n awesome\t")
             );
         }
 
@@ -115,11 +115,11 @@ namespace Aperture.Parser.Tests
         {
             Assert.AreEqual(
                 "x x",
-                StringParser.TrimLeadingAndTrailingWhitespace("    x x   ")
+                ParserIdioms.TrimLeadingAndTrailingWhitespace("    x x   ")
             );
             Assert.AreEqual(
                 string.Empty,
-                StringParser.TrimLeadingAndTrailingWhitespace("  \r\n\t    ")
+                ParserIdioms.TrimLeadingAndTrailingWhitespace("  \r\n\t    ")
             );
         }
     }

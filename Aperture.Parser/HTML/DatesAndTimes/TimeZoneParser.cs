@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.Miscellaneous
+namespace Aperture.Parser.HTML.DatesAndTimes
 {
     public static class TimeZoneParser
     {
@@ -57,8 +57,8 @@ namespace Aperture.Parser.Miscellaneous
                         // not, the offset string is invalid.
                         return false;
 
-                    if (hourChars.All(ch => StringParser.ASCIIDigits.Contains(ch)) &&
-                        minuteChars.All(ch => StringParser.ASCIIDigits.Contains(ch)))
+                    if (hourChars.All(ch => ParserIdioms.ASCIIDigits.Contains(ch)) &&
+                        minuteChars.All(ch => ParserIdioms.ASCIIDigits.Contains(ch)))
                     {
                         // Hour chars and minute chars are all ASCII digits
                         int hours = int.Parse(hourChars);
