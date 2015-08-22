@@ -62,6 +62,7 @@
     <Compile Include="DateParserTests.cs" />
     <Compile Include="TimeParserTests.cs" />
     <Compile Include="LocalDateAndTimeParserTests.cs" />
+    <Compile Include="TimeZoneParserTests.cs" />
     <Compile Include="YearlessDateParserTests.cs" />
   </ItemGroup>
   <ItemGroup>

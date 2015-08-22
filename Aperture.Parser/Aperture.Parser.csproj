@@ -40,12 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructures\TimeZoneOffset.cs" />
     <Compile Include="Miscellaneous\DateParser.cs" />
     <Compile Include="Miscellaneous\LocalDateAndTimeParser.cs" />
     <Compile Include="Miscellaneous\MonthParser.cs" />
     <Compile Include="Miscellaneous\NumberParser.cs" />
     <Compile Include="Miscellaneous\StringParser.cs" />
     <Compile Include="Miscellaneous\TimeParser.cs" />
+    <Compile Include="Miscellaneous\TimeZoneParser.cs" />
     <Compile Include="Miscellaneous\YearlessDateParser.cs" />
     <Compile Include="DataStructures\MonthAndDay.cs" />
     <Compile Include="DataStructures\Date.cs" />
