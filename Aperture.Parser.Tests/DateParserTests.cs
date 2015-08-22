@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Aperture.Parser.HTML;
 using Aperture.Parser.DataStructures;
-using Aperture.Parser.HTML.DatesAndTimes;
+using Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes;
 
 namespace Aperture.Parser.Tests
 {

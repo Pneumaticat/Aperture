@@ -1,5 +1,5 @@
 ﻿using Aperture.Parser.DataStructures;
-using Aperture.Parser.HTML.Numbers;
+using Aperture.Parser.HTML.Microsyntaxes.Numbers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.HTML.DatesAndTimes
+namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
 {
     public static class TimeParser
     {

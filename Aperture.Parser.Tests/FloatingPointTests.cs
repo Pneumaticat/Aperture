@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Aperture.Parser.HTML;
 using Aperture.Parser.Exceptions;
-using Aperture.Parser.HTML.Numbers;
+using Aperture.Parser.HTML.Microsyntaxes.Numbers;
 
 namespace Aperture.Parser.Tests
 {

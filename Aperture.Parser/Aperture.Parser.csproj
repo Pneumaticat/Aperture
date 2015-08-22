@@ -42,20 +42,20 @@
   <ItemGroup>
     <Compile Include="DataStructures\TimeZoneOffset.cs" />
     <Compile Include="HTML\CommaSeparatedTokens.cs" />
-    <Compile Include="HTML\DatesAndTimes\DateParser.cs" />
-    <Compile Include="HTML\DatesAndTimes\LocalDateAndTimeParser.cs" />
-    <Compile Include="HTML\DatesAndTimes\MonthParser.cs" />
-    <Compile Include="HTML\Numbers\FloatingPointNumbers.cs" />
-    <Compile Include="HTML\Numbers\ListsOfDimensions.cs" />
-    <Compile Include="HTML\Numbers\ListsOfIntegers.cs" />
-    <Compile Include="HTML\Numbers\NonNegativeIntegers.cs" />
-    <Compile Include="HTML\Numbers\PercentagesAndLengths.cs" />
-    <Compile Include="HTML\Numbers\SignedIntegers.cs" />
-    <Compile Include="HTML\ParserIdioms.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\DateParser.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\LocalDateAndTimeParser.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\MonthParser.cs" />
+    <Compile Include="HTML\Microsyntaxes\Numbers\FloatingPointNumbers.cs" />
+    <Compile Include="HTML\Microsyntaxes\Numbers\ListsOfDimensions.cs" />
+    <Compile Include="HTML\Microsyntaxes\Numbers\ListsOfIntegers.cs" />
+    <Compile Include="HTML\Microsyntaxes\Numbers\NonNegativeIntegers.cs" />
+    <Compile Include="HTML\Microsyntaxes\Numbers\PercentagesAndLengths.cs" />
+    <Compile Include="HTML\Microsyntaxes\Numbers\SignedIntegers.cs" />
+    <Compile Include="HTML\Microsyntaxes\ParserIdioms.cs" />
     <Compile Include="HTML\StringComparisons.cs" />
-    <Compile Include="HTML\DatesAndTimes\TimeParser.cs" />
-    <Compile Include="HTML\DatesAndTimes\TimeZoneParser.cs" />
-    <Compile Include="HTML\DatesAndTimes\YearlessDateParser.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\TimeParser.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\TimeZoneParser.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\YearlessDateParser.cs" />
     <Compile Include="DataStructures\MonthAndDay.cs" />
     <Compile Include="DataStructures\Date.cs" />
     <Compile Include="DataStructures\Time.cs" />
@@ -71,7 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HTML\DatesAndTimes\DateTimeUtils.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\DateTimeUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

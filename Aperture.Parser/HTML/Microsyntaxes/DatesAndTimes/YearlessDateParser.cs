@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.HTML.DatesAndTimes
+namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
 {
     public static class YearlessDateParser
     {

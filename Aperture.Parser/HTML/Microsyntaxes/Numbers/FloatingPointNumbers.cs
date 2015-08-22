@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.HTML.Numbers
+namespace Aperture.Parser.HTML.Microsyntaxes.Numbers
 {
     public static class FloatingPointNumbers
     {

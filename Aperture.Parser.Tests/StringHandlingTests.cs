@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Aperture.Parser.HTML;
+using Aperture.Parser.HTML.Microsyntaxes;
 
 namespace Aperture.Parser.Tests
 {

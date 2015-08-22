@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.HTML.DatesAndTimes
+namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
 {
     public static class LocalDateAndTimeParser
     {

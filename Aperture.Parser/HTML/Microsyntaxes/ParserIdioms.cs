@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aperture.Parser.HTML
+namespace Aperture.Parser.HTML.Microsyntaxes
 {
     public static class ParserIdioms
     {

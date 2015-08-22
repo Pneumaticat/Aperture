@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aperture.Parser.HTML.Microsyntaxes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,4 @@
-﻿using Aperture.Parser.HTML.DatesAndTimes;
+﻿using Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Aperture.Parser.HTML;
 using Aperture.Parser.DataStructures;
 using System.Collections.Generic;
-using Aperture.Parser.HTML.Numbers;
+using Aperture.Parser.HTML.Microsyntaxes.Numbers;
 
 namespace Aperture.Parser.Tests
 {
