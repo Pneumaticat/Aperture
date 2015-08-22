@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
 {
-    public static class LocalDateAndTimeParser
+    public static class LocalDatesAndTimes
     {
         public static bool IsValidLocalDateAndTimeString(string input)
         {
@@ -18,8 +18,8 @@ namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
             // Not really what they meant, I don't think, with the splitting,
             // but it works!
             return items.Length == 2 &&
-                   DateParser.IsValidDateString(items[0]) &&
-                   TimeParser.IsValidTimeString(items[1]);
+                   Dates.IsValidDateString(items[0]) &&
+                   Times.IsValidTimeString(items[1]);
         }
 
         public static bool IsValidNormalisedLocalDateAndTimeString(string input)
@@ -32,13 +32,13 @@ namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
             string[] items = input.Split('T');
             if (items.Length == 2)
             {
-                bool validDate = DateParser.IsValidDateString(items[0]);
+                bool validDate = Dates.IsValidDateString(items[0]);
                 // If second half of input is valid time string...
-                if (TimeParser.TimeStringRegex.IsMatch(items[1]))
+                if (Times.TimeStringRegex.IsMatch(items[1]))
                 {
                     // Group 3 of regex: optional seconds
                     // Group 4: optional fractional part of seconds
-                    GroupCollection groups = TimeParser.TimeStringRegex.Match(items[1]).Groups;
+                    GroupCollection groups = Times.TimeStringRegex.Match(items[1]).Groups;
 
                     if (groups[3].Value == "00")
                         // Seconds is just 0, but is explicitly written out as
@@ -76,7 +76,7 @@ namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
         {
             int position = 0;
 
-            Date? date = DateParser.ParseDateComponent(input, ref position);
+            Date? date = Dates.ParseDateComponent(input, ref position);
             if (date == null)
                 return null;
 
@@ -86,7 +86,7 @@ namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
             else
                 position++;
 
-            Time? time = TimeParser.ParseTimeComponent(input, ref position);
+            Time? time = Times.ParseTimeComponent(input, ref position);
             if (time == null || position < input.Length)
                 return null;
             else

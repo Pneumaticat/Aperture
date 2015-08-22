@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
 {
-    public static class TimeParser
+    public static class Times
     {
         // HTML spec 2.4.5.4 Times
 

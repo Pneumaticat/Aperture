@@ -13,15 +13,15 @@ namespace Aperture.Parser.Tests
         {
             Assert.AreEqual(
                 new MonthAndDay(2, 29),
-                YearlessDateParser.ParseYearlessDateString("02-29"));
+                YearlessDates.ParseYearlessDateString("02-29"));
             Assert.AreEqual(
                 new MonthAndDay(12, 31),
-                YearlessDateParser.ParseYearlessDateString("12-31"));
-            Assert.IsNull(YearlessDateParser.ParseYearlessDateString("1-1"));
-            Assert.IsNull(YearlessDateParser.ParseYearlessDateString("13-32"));
-            Assert.IsNull(YearlessDateParser.ParseYearlessDateString("11"));
-            Assert.IsNull(YearlessDateParser.ParseYearlessDateString("00-00"));
-            Assert.IsNull(YearlessDateParser.ParseYearlessDateString("     "));
+                YearlessDates.ParseYearlessDateString("12-31"));
+            Assert.IsNull(YearlessDates.ParseYearlessDateString("1-1"));
+            Assert.IsNull(YearlessDates.ParseYearlessDateString("13-32"));
+            Assert.IsNull(YearlessDates.ParseYearlessDateString("11"));
+            Assert.IsNull(YearlessDates.ParseYearlessDateString("00-00"));
+            Assert.IsNull(YearlessDates.ParseYearlessDateString("     "));
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
 {
-    public static class TimeZoneParser
+    public static class TimeZones
     {
         public static bool IsValidTimeZoneOffsetString(
             string input,

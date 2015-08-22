@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
 {
-    public static class DateParser
+    public static class Dates
     {
         public static bool IsValidDateString(string input)
         {
@@ -26,11 +26,11 @@ namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
 
         public static Date? ParseDateComponent(string input, ref int position)
         {
-            YearAndMonth? yam = MonthParser.ParseMonthComponent(input, ref position);
+            YearAndMonth? yam = Months.ParseMonthComponent(input, ref position);
             if (yam == null)
                 return null;
 
-            int maxday = DateTimeUtils.DaysInMonth(yam.Value.Month, yam.Value.Year);
+            int maxday = DatesAndTimes.DaysInMonth(yam.Value.Month, yam.Value.Year);
             if (position >= input.Length || input[position] != '-')
                 return null;
             else

@@ -42,9 +42,9 @@
   <ItemGroup>
     <Compile Include="DataStructures\TimeZoneOffset.cs" />
     <Compile Include="HTML\CommaSeparatedTokens.cs" />
-    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\DateParser.cs" />
-    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\LocalDateAndTimeParser.cs" />
-    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\MonthParser.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\Dates.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\LocalDatesAndTimes.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\Months.cs" />
     <Compile Include="HTML\Microsyntaxes\Numbers\FloatingPointNumbers.cs" />
     <Compile Include="HTML\Microsyntaxes\Numbers\ListsOfDimensions.cs" />
     <Compile Include="HTML\Microsyntaxes\Numbers\ListsOfIntegers.cs" />
@@ -53,9 +53,9 @@
     <Compile Include="HTML\Microsyntaxes\Numbers\SignedIntegers.cs" />
     <Compile Include="HTML\Microsyntaxes\ParserIdioms.cs" />
     <Compile Include="HTML\StringComparisons.cs" />
-    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\TimeParser.cs" />
-    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\TimeZoneParser.cs" />
-    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\YearlessDateParser.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\Times.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\TimeZones.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\YearlessDates.cs" />
     <Compile Include="DataStructures\MonthAndDay.cs" />
     <Compile Include="DataStructures\Date.cs" />
     <Compile Include="DataStructures\Time.cs" />
@@ -71,7 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\DateTimeUtils.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\DatesAndTimes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

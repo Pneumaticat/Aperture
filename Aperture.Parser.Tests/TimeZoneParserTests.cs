@@ -12,19 +12,19 @@ namespace Aperture.Parser.Tests
         [TestMethod]
         public void TestIsValidTimeZoneOffsetString()
         {
-            Assert.IsTrue(TimeZoneParser.IsValidTimeZoneOffsetString(
+            Assert.IsTrue(TimeZones.IsValidTimeZoneOffsetString(
                 "+00:00", new TimeZoneOffset(0, 0)));
-            Assert.IsTrue(TimeZoneParser.IsValidTimeZoneOffsetString(
+            Assert.IsTrue(TimeZones.IsValidTimeZoneOffsetString(
                 "Z", new TimeZoneOffset(0, 0)));
-            Assert.IsTrue(TimeZoneParser.IsValidTimeZoneOffsetString(
+            Assert.IsTrue(TimeZones.IsValidTimeZoneOffsetString(
                 "-05:00", new TimeZoneOffset(-5, -0)));
 
-            Assert.IsFalse(TimeZoneParser.IsValidTimeZoneOffsetString(
+            Assert.IsFalse(TimeZones.IsValidTimeZoneOffsetString(
                 "+001:00", new TimeZoneOffset(1, 0)));
-            Assert.IsFalse(TimeZoneParser.IsValidTimeZoneOffsetString(
+            Assert.IsFalse(TimeZones.IsValidTimeZoneOffsetString(
                 "+0115randomcharacters", new TimeZoneOffset(1, 15)),
                 "Incorrectly accepts time zones with characters after the offset.");
-            Assert.IsFalse(TimeZoneParser.IsValidTimeZoneOffsetString(
+            Assert.IsFalse(TimeZones.IsValidTimeZoneOffsetString(
                 "-00:00", new TimeZoneOffset(-0, -0)),
                 "Incorrectly accepts a negative 0 timezone offset (-00:00).");
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
 {
-    public static class YearlessDateParser
+    public static class YearlessDates
     {
         public static MonthAndDay? ParseYearlessDateString(string input)
         {
@@ -43,7 +43,7 @@ namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
             if (month < 1 || month > 12)
                 return null;
 
-            int maxday = DateTimeUtils.DaysInMonth(month, DateTimeUtils.ArbitraryLeapYear);
+            int maxday = DatesAndTimes.DaysInMonth(month, DatesAndTimes.ArbitraryLeapYear);
 
             if (position >= input.Length || input[position] != '-')
                 return null;

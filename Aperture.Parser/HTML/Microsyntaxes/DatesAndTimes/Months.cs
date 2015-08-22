@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
 {
-    public static class MonthParser
+    public static class Months
     {
 
         public static bool IsValidMonthString(string input)
