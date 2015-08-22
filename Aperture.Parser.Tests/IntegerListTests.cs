@@ -20,7 +20,7 @@ namespace Aperture.Parser.Tests
                     -754,
                     334334343
                 },
-                NumberUtils.ParseListOfIntegers("500000, 1, -754, 334334343")
+                NumberParser.ParseListOfIntegers("500000, 1, -754, 334334343")
             );
         }
 
@@ -29,19 +29,19 @@ namespace Aperture.Parser.Tests
         {
             CollectionAssert.AreEqual(
                 new List<int>(),
-                NumberUtils.ParseListOfIntegers("")
+                NumberParser.ParseListOfIntegers("")
             );
             CollectionAssert.AreEqual(
                 new List<int>(),
-                NumberUtils.ParseListOfIntegers(" ")
+                NumberParser.ParseListOfIntegers(" ")
             );
             CollectionAssert.AreEqual(
                 new List<int>(),
-                NumberUtils.ParseListOfIntegers(" , ")
+                NumberParser.ParseListOfIntegers(" , ")
             );
             CollectionAssert.AreEqual(
                 new List<int>(),
-                NumberUtils.ParseListOfIntegers(",,,")
+                NumberParser.ParseListOfIntegers(",,,")
             );
         }
 
@@ -53,7 +53,7 @@ namespace Aperture.Parser.Tests
             // empty list.
             CollectionAssert.AreEqual(
                 new List<int>(),
-                NumberUtils.ParseListOfIntegers("xxx,xxx,xxx")
+                NumberParser.ParseListOfIntegers("xxx,xxx,xxx")
             );
             // Test what happens when one element is invalid, should return 
             // the list it had up to the point of the invalid element
@@ -63,7 +63,7 @@ namespace Aperture.Parser.Tests
                     777,
                     888
                 },
-                NumberUtils.ParseListOfIntegers("777, 888, xxx")
+                NumberParser.ParseListOfIntegers("777, 888, xxx")
             );
             CollectionAssert.AreEqual(
                 new List<int>
@@ -72,7 +72,7 @@ namespace Aperture.Parser.Tests
                 },
                 // There is slightly different handling for unicode chars in 
                 // the parser (for ex. ☃) which should be tested.
-                NumberUtils.ParseListOfIntegers("7, ☃, [][]")
+                NumberParser.ParseListOfIntegers("7, ☃, [][]")
             );
         }
         
@@ -90,7 +90,7 @@ namespace Aperture.Parser.Tests
                     3,
                     5
                 },
-                NumberUtils.ParseListOfIntegers("545, 3.623, 5")
+                NumberParser.ParseListOfIntegers("545, 3.623, 5")
             );
         }
     }

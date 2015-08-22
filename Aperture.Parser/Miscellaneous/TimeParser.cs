@@ -46,10 +46,10 @@ namespace Aperture.Parser.Miscellaneous
         public static Time? ParseTimeComponent(string input, ref int position)
         {
             int hour;
-            string hourChars = StringUtils.CollectSequenceOfCharacters(
+            string hourChars = StringParser.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringUtils.ASCIIDigits.Contains(ch));
+                ch => StringParser.ASCIIDigits.Contains(ch));
             if (hourChars.Length != 2)
                 return null;
             else
@@ -64,10 +64,10 @@ namespace Aperture.Parser.Miscellaneous
                 position++;
 
             int minute;
-            string minuteChars = StringUtils.CollectSequenceOfCharacters(
+            string minuteChars = StringParser.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringUtils.ASCIIDigits.Contains(ch));
+                ch => StringParser.ASCIIDigits.Contains(ch));
             if (minuteChars.Length != 2)
                 return null;
             else
@@ -86,14 +86,14 @@ namespace Aperture.Parser.Miscellaneous
                 // are not ASCII digits, fail.
                 if (position >= input.Length ||
                     position == input.Length - 1 ||
-                    (!StringUtils.ASCIIDigits.Contains(input[position]) ||
-                     !StringUtils.ASCIIDigits.Contains(input[position + 1])))
+                    (!StringParser.ASCIIDigits.Contains(input[position]) ||
+                     !StringParser.ASCIIDigits.Contains(input[position + 1])))
                     return null;
 
-                string maybeSecondChars = StringUtils.CollectSequenceOfCharacters(
+                string maybeSecondChars = StringParser.CollectSequenceOfCharacters(
                     input,
                     ref position,
-                    ch => StringUtils.ASCIIDigits.Contains(ch) || ch == '.');
+                    ch => StringParser.ASCIIDigits.Contains(ch) || ch == '.');
 
                 // If the collected sequence is three characters long, or if 
                 // it is longer than three characters long and the third 
@@ -112,7 +112,7 @@ namespace Aperture.Parser.Miscellaneous
             // part. ...So, a a floating-point? Also, should the default 
             // double.Parse be used, or the homemade 
             // NumberUtils.ParseFloatingPointNumber? So many questions.
-            double secondNum = NumberUtils.ParseFloatingPointNumber(second);
+            double secondNum = NumberParser.ParseFloatingPointNumber(second);
             if (secondNum < 0 || secondNum > 59)
                 return null;
             else

@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Aperture.Parser.Miscellaneous
 {
-    public static class StringUtils
+    public static class StringParser
     {
         // HTML spec 2.3 Case-sensitivity and string comparisons
         

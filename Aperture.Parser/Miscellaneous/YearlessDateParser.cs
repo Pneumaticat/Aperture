@@ -22,7 +22,7 @@ namespace Aperture.Parser.Miscellaneous
 
         public static MonthAndDay? ParseYearlessDateComponent(string input, ref int position)
         {
-            string hyphens = StringUtils.CollectSequenceOfCharacters(
+            string hyphens = StringParser.CollectSequenceOfCharacters(
                 input,
                 ref position,
                 ch => ch == '-');
@@ -30,10 +30,10 @@ namespace Aperture.Parser.Miscellaneous
                 return null;
 
             int month;
-            string monthChars = StringUtils.CollectSequenceOfCharacters(
+            string monthChars = StringParser.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringUtils.ASCIIDigits.Contains(ch));
+                ch => StringParser.ASCIIDigits.Contains(ch));
 
             if (monthChars.Length != 2)
                 return null;
@@ -51,10 +51,10 @@ namespace Aperture.Parser.Miscellaneous
                 position++;
 
             int day;
-            string dayChars = StringUtils.CollectSequenceOfCharacters(
+            string dayChars = StringParser.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringUtils.ASCIIDigits.Contains(ch));
+                ch => StringParser.ASCIIDigits.Contains(ch));
             if (dayChars.Length != 2)
                 return null;
             else

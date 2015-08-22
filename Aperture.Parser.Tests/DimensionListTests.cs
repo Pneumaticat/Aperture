@@ -20,7 +20,7 @@ namespace Aperture.Parser.Tests
                     new DimensionListPair(20, DimensionListPairUnit.Absolute),
                     new DimensionListPair(40, DimensionListPairUnit.Absolute)
                 },
-                NumberUtils.ParseListOfDimensions("50%, 7*, 20, 40")
+                NumberParser.ParseListOfDimensions("50%, 7*, 20, 40")
             );
         }
 
@@ -33,7 +33,7 @@ namespace Aperture.Parser.Tests
                     new DimensionListPair(5, DimensionListPairUnit.Percentage),
                     new DimensionListPair(7, DimensionListPairUnit.Relative)
                 },
-                NumberUtils.ParseListOfDimensions("5  %, 7  *")
+                NumberParser.ParseListOfDimensions("5  %, 7  *")
             );
         }
 
@@ -47,7 +47,7 @@ namespace Aperture.Parser.Tests
                     new DimensionListPair(8, DimensionListPairUnit.Absolute),
                     new DimensionListPair(9, DimensionListPairUnit.Absolute)
                 },
-                NumberUtils.ParseListOfDimensions(
+                NumberParser.ParseListOfDimensions(
                     "               7,           8,             9 ")
             );
             // Should return 0, relative when given an invalid whitespace-only 
@@ -57,7 +57,7 @@ namespace Aperture.Parser.Tests
                 {
                     new DimensionListPair(0, DimensionListPairUnit.Relative)
                 },
-                NumberUtils.ParseListOfDimensions("  ")
+                NumberParser.ParseListOfDimensions("  ")
             );
         }
 
@@ -71,7 +71,7 @@ namespace Aperture.Parser.Tests
                     new DimensionListPair(7.55d, DimensionListPairUnit.Percentage),
                     new DimensionListPair(55,    DimensionListPairUnit.Relative)
                 },
-                NumberUtils.ParseListOfDimensions("1.5, 7.55%, 55*")
+                NumberParser.ParseListOfDimensions("1.5, 7.55%, 55*")
             );
         }
     }

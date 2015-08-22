@@ -35,10 +35,10 @@ namespace Aperture.Parser.Miscellaneous
         public static YearAndMonth? ParseMonthComponent(string input, ref int position)
         {
             int year;
-            string yearChars = StringUtils.CollectSequenceOfCharacters(
+            string yearChars = StringParser.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringUtils.ASCIIDigits.Contains(ch));
+                ch => StringParser.ASCIIDigits.Contains(ch));
 
             if (yearChars.Length < 4)
                 return null;
@@ -55,10 +55,10 @@ namespace Aperture.Parser.Miscellaneous
                 position++;
 
             int month;
-            string monthChars = StringUtils.CollectSequenceOfCharacters(
+            string monthChars = StringParser.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                ch => StringUtils.ASCIIDigits.Contains(ch));
+                ch => StringParser.ASCIIDigits.Contains(ch));
             if (monthChars.Length != 2)
                 return null;
             else

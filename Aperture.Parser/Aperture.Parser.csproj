@@ -43,8 +43,8 @@
     <Compile Include="Miscellaneous\DateParser.cs" />
     <Compile Include="Miscellaneous\LocalDateAndTimeParser.cs" />
     <Compile Include="Miscellaneous\MonthParser.cs" />
-    <Compile Include="Miscellaneous\NumberUtils.cs" />
-    <Compile Include="Miscellaneous\StringUtils.cs" />
+    <Compile Include="Miscellaneous\NumberParser.cs" />
+    <Compile Include="Miscellaneous\StringParser.cs" />
     <Compile Include="Miscellaneous\TimeParser.cs" />
     <Compile Include="Miscellaneous\YearlessDateParser.cs" />
     <Compile Include="DataStructures\MonthAndDay.cs" />

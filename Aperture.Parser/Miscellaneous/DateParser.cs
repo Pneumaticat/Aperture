@@ -37,8 +37,8 @@ namespace Aperture.Parser.Miscellaneous
                 position++;
 
             int day;
-            string dayChars = StringUtils.CollectSequenceOfCharacters(input, ref position,
-                ch => StringUtils.ASCIIDigits.Contains(ch));
+            string dayChars = StringParser.CollectSequenceOfCharacters(input, ref position,
+                ch => StringParser.ASCIIDigits.Contains(ch));
 
             if (dayChars.Length != 2)
                 return null;

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Aperture.Parser.Miscellaneous
 {
-    public static class NumberUtils
+    public static class NumberParser
     {
         // 2.4.4.1 Signed integers
         public static int ParseInteger(string input)
@@ -17,7 +17,7 @@ namespace Aperture.Parser.Miscellaneous
             int position = 0;
             string sign = "positive";
 
-            StringUtils.SkipWhitespace(input, ref position);
+            StringParser.SkipWhitespace(input, ref position);
 
             if (position >= input.Length)
                 // TODO: This may not be the kind of error they were looking for.
@@ -40,13 +40,13 @@ namespace Aperture.Parser.Miscellaneous
                     throw new InvalidIntegerException("Integer string contains only a positive sign.");
             }
 
-            if (!StringUtils.ASCIIDigits.Contains(input[position]))
+            if (!StringParser.ASCIIDigits.Contains(input[position]))
                 throw new InvalidIntegerException("Character in integer string is not an ASCII digit.");
 
-            string digits = StringUtils.CollectSequenceOfCharacters(
+            string digits = StringParser.CollectSequenceOfCharacters(
                 input, 
                 ref position, 
-                (char ch) => StringUtils.ASCIIDigits.Contains(ch));
+                (char ch) => StringParser.ASCIIDigits.Contains(ch));
 
             int value = int.Parse(digits);
             if (sign == "positive")
@@ -82,7 +82,7 @@ namespace Aperture.Parser.Miscellaneous
             double divisor = 1;
             int exponent = 1;
 
-            StringUtils.SkipWhitespace(input, ref position);
+            StringParser.SkipWhitespace(input, ref position);
 
             if (position >= input.Length)
                 throw new InvalidFloatNumberException("Floating-point number consists only of whitespace.");
@@ -108,19 +108,19 @@ namespace Aperture.Parser.Miscellaneous
                 // And position is not at end of string
                 position != input.Length - 1 && 
                 // And next char is an ASCII digit
-                StringUtils.ASCIIDigits.Contains(input[position + 1]))
+                StringParser.ASCIIDigits.Contains(input[position + 1]))
             {
                 value = 0;
                 goto Fraction;
             }
 
-            if (!StringUtils.ASCIIDigits.Contains(input[position]))
+            if (!StringParser.ASCIIDigits.Contains(input[position]))
                 throw new InvalidFloatNumberException("Floating-point number string contains a non-ASCII-digit character.");
 
-            string digits = StringUtils.CollectSequenceOfCharacters(
+            string digits = StringParser.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                (char ch) => StringUtils.ASCIIDigits.Contains(ch));
+                (char ch) => StringParser.ASCIIDigits.Contains(ch));
             value = value * int.Parse(digits);
 
             if (position >= input.Length)
@@ -132,7 +132,7 @@ namespace Aperture.Parser.Miscellaneous
                 position++;
                 if (position >= input.Length ||
                     // or the char is neither an ASCII digit, nor an e, nor an E
-                    !(StringUtils.ASCIIDigits.Contains(input[position]) ||
+                    !(StringParser.ASCIIDigits.Contains(input[position]) ||
                     input[position] == 'e' ||
                     input[position] == 'E'))
                     goto Conversion;
@@ -147,7 +147,7 @@ namespace Aperture.Parser.Miscellaneous
                         if (position >= input.Length)
                             goto Conversion;
                     }
-                    while (StringUtils.ASCIIDigits.Contains(input[position]));
+                    while (StringParser.ASCIIDigits.Contains(input[position]));
                 }
             }
 
@@ -171,14 +171,14 @@ namespace Aperture.Parser.Miscellaneous
                         goto Conversion;
                 }
 
-                if (!StringUtils.ASCIIDigits.Contains(input[position]))
+                if (!StringParser.ASCIIDigits.Contains(input[position]))
                     goto Conversion;
 
                 int digitSequence = int.Parse(
-                    StringUtils.CollectSequenceOfCharacters(
+                    StringParser.CollectSequenceOfCharacters(
                         input, 
                         ref position, 
-                        (char ch) => StringUtils.ASCIIDigits.Contains(ch)));
+                        (char ch) => StringParser.ASCIIDigits.Contains(ch)));
 
                 exponent = exponent * digitSequence;
                 value = value * Math.Pow(10, exponent);
@@ -195,7 +195,7 @@ namespace Aperture.Parser.Miscellaneous
         {
             int position = 0;
 
-            StringUtils.SkipWhitespace(input, ref position);
+            StringParser.SkipWhitespace(input, ref position);
 
             if (position >= input.Length)
                 throw new InvalidDimensionValueException("Value is only whitespace.");
@@ -203,7 +203,7 @@ namespace Aperture.Parser.Miscellaneous
             if (input[position] == '+')
                 position++;
 
-            StringUtils.CollectSequenceOfCharacters(input, ref position, (char ch) => ch == '0');
+            StringParser.CollectSequenceOfCharacters(input, ref position, (char ch) => ch == '0');
 
             if (position >= input.Length)
                 throw new InvalidDimensionValueException("Invalid dimension value.");
@@ -211,10 +211,10 @@ namespace Aperture.Parser.Miscellaneous
             if ("123456789".ToCharArray().Contains(input[position]) == false)
                 throw new InvalidDimensionValueException("Value contains a character that is not 1-9.");
 
-            int value = int.Parse(StringUtils.CollectSequenceOfCharacters(
+            int value = int.Parse(StringParser.CollectSequenceOfCharacters(
                 input,
                 ref position,
-                (char ch) => StringUtils.ASCIIDigits.Contains(ch)));
+                (char ch) => StringParser.ASCIIDigits.Contains(ch)));
 
             if (position >= input.Length)
                 return new Dimension(DimensionType.Length, value);
@@ -223,7 +223,7 @@ namespace Aperture.Parser.Miscellaneous
             {
                 position++;
                 if (position >= input.Length ||
-                    !StringUtils.ASCIIDigits.Contains(input[position]))
+                    !StringParser.ASCIIDigits.Contains(input[position]))
                 {
                     return new Dimension(DimensionType.Length, value);
                 }
@@ -238,7 +238,7 @@ namespace Aperture.Parser.Miscellaneous
                     if (position >= input.Length)
                         return new Dimension(DimensionType.Length, value);
                 }
-                while (StringUtils.ASCIIDigits.Contains(input[position]));
+                while (StringParser.ASCIIDigits.Contains(input[position]));
             }
 
             if (position >= input.Length)
@@ -297,7 +297,7 @@ namespace Aperture.Parser.Miscellaneous
 
                 started = true;
             }
-            else if (StringUtils.ASCIIDigits.Contains(input[position]))
+            else if (StringParser.ASCIIDigits.Contains(input[position]))
             {
                 if (finished)
                     goto EndParserLoop;
@@ -367,7 +367,7 @@ namespace Aperture.Parser.Miscellaneous
             if (rawInput.Last() == ',')
                 rawInput.Remove(rawInput.Length - 2, 1);
 
-            string[] rawTokens = StringUtils.SplitStringOnCommas(rawInput);
+            string[] rawTokens = StringParser.SplitStringOnCommas(rawInput);
 
             List<DimensionListPair> result = new List<DimensionListPair>();
 
@@ -382,15 +382,15 @@ namespace Aperture.Parser.Miscellaneous
                     unit = DimensionListPairUnit.Relative;
                     goto AddToResults;
                 }
-                else if (StringUtils.ASCIIDigits.Contains(input[position]))
+                else if (StringParser.ASCIIDigits.Contains(input[position]))
                 {
                     value = value +
                         (int.Parse(
-                            StringUtils.CollectSequenceOfCharacters(
+                            StringParser.CollectSequenceOfCharacters(
                                 input,
                                 ref position,
                                 (char ch) =>
-                                 StringUtils.ASCIIDigits.Contains(ch))));
+                                 StringParser.ASCIIDigits.Contains(ch))));
                 }
 
                 if (position < input.Length && input[position] == '.')
@@ -400,14 +400,14 @@ namespace Aperture.Parser.Miscellaneous
 
                     // Collect a sequence of characters consisting of 
                     // space characters and ASCII digits.
-                    string s = StringUtils.CollectSequenceOfCharacters(
+                    string s = StringParser.CollectSequenceOfCharacters(
                         input, ref position,
                         (char ch) => 
-                            StringUtils.ASCIIDigits.Contains(ch) ||
-                            StringUtils.SpaceCharacters.Contains(ch));
+                            StringParser.ASCIIDigits.Contains(ch) ||
+                            StringParser.SpaceCharacters.Contains(ch));
 
                     // Remove space chars from s
-                    foreach (char ch in StringUtils.SpaceCharacters)
+                    foreach (char ch in StringParser.SpaceCharacters)
                         s = s.Replace(ch.ToString(), "");
 
                     if (s != string.Empty)
@@ -419,7 +419,7 @@ namespace Aperture.Parser.Miscellaneous
                     }
                 }
 
-                StringUtils.SkipWhitespace(input, ref position);
+                StringParser.SkipWhitespace(input, ref position);
 
                 // Check if position is past end of string, which isn't 
                 // said in the spec, but I think otherwise there are some 
