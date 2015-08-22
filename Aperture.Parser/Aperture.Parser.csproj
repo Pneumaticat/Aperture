@@ -40,8 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DateParser.cs" />
+    <Compile Include="Common\LocalDateAndTimeParser.cs" />
+    <Compile Include="Common\MonthParser.cs" />
     <Compile Include="Common\NumberUtils.cs" />
     <Compile Include="Common\StringUtils.cs" />
+    <Compile Include="Common\TimeParser.cs" />
+    <Compile Include="Common\YearlessDateParser.cs" />
     <Compile Include="DataStructures\MonthAndDay.cs" />
     <Compile Include="DataStructures\Date.cs" />
     <Compile Include="DataStructures\Time.cs" />

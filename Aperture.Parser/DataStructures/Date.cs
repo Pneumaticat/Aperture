@@ -23,7 +23,12 @@ namespace Aperture.Parser.DataStructures
                 throw new ArgumentOutOfRangeException(
                     nameof(month), "Month must be between 1 and 12.");
 
-            Day = DateTimeUtils.DaysInMonth(month, year);
+            if (day > 0 && day <= DateTimeUtils.DaysInMonth(month, year))
+                Day = day;
+            else
+                throw new ArgumentOutOfRangeException(
+                    nameof(day),
+                    "Day must be between 1 and the max possible day for this month.");
         }
 
         public int Year { get; }
