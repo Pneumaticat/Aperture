@@ -3,10 +3,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Aperture.Parser.DataStructures;
 using Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes;
 
-namespace Aperture.Parser.Tests
+namespace Aperture.Parser.Tests.HTML.Microsyntaxes.DatesAndTimes
 {
     [TestClass]
-    public class TimeParserTests
+    public class TimesTests
     {
         [TestMethod]
         public void TestIsValidTimeString()

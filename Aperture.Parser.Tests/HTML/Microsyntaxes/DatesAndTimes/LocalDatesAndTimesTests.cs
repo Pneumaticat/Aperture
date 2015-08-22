@@ -1,12 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Aperture.Parser.HTML;
 using Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes;
 
-namespace Aperture.Parser.Tests
+namespace Aperture.Parser.Tests.HTML.Microsyntaxes.DatesAndTimes
 {
     [TestClass]
-    public class LocalDateAndTimeParserTests
+    public class LocalDatesAndTimesTests
     {
         [TestMethod]
         public void TestIsValidLocalDateAndTimeString()

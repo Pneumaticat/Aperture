@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
 {
-    public static class DatesAndTimes
+    public static class DatesAndTimesUtils
     {
         public const int ArbitraryLeapYear = 4;
 

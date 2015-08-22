@@ -43,7 +43,7 @@ namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
             if (month < 1 || month > 12)
                 return null;
 
-            int maxday = DatesAndTimes.DaysInMonth(month, DatesAndTimes.ArbitraryLeapYear);
+            int maxday = DatesAndTimesUtils.DaysInMonth(month, DatesAndTimesUtils.ArbitraryLeapYear);
 
             if (position >= input.Length || input[position] != '-')
                 return null;

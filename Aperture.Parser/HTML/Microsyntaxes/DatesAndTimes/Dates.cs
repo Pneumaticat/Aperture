@@ -30,7 +30,7 @@ namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
             if (yam == null)
                 return null;
 
-            int maxday = DatesAndTimes.DaysInMonth(yam.Value.Month, yam.Value.Year);
+            int maxday = DatesAndTimesUtils.DaysInMonth(yam.Value.Month, yam.Value.Year);
             if (position >= input.Length || input[position] != '-')
                 return null;
             else

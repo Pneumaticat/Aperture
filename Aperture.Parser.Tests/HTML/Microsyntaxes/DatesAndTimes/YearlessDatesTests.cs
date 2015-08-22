@@ -3,10 +3,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Aperture.Parser.DataStructures;
 using Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes;
 
-namespace Aperture.Parser.Tests
+namespace Aperture.Parser.Tests.HTML.Microsyntaxes.DateAndTimes
 {
     [TestClass]
-    public class YearlessDateParserTests
+    public class YearlessDatesTests
     {
         [TestMethod]
         public void TestYearlessDateStringParsing()

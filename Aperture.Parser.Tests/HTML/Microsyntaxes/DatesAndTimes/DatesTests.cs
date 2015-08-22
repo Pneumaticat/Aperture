@@ -4,10 +4,10 @@ using Aperture.Parser.HTML;
 using Aperture.Parser.DataStructures;
 using Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes;
 
-namespace Aperture.Parser.Tests
+namespace Aperture.Parser.Tests.HTML.Microsyntaxes.DatesAndTimes
 {
     [TestClass]
-    public class DateParserTests
+    public class DatesTests
     {
         [TestMethod]
         public void TestIsValidDateString()

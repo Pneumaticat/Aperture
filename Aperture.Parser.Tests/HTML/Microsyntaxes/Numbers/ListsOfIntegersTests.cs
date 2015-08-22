@@ -1,14 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Aperture.Parser.HTML;
-using Aperture.Parser.Exceptions;
 using Aperture.Parser.HTML.Microsyntaxes.Numbers;
 
-namespace Aperture.Parser.Tests
+namespace Aperture.Parser.Tests.HTML.Microsyntaxes.Numbers
 {
     [TestClass]
-    public class IntegerListTests
+    public class ListsOfIntegersTests
     {
         [TestMethod]
         public void TestIntegerListParsing()

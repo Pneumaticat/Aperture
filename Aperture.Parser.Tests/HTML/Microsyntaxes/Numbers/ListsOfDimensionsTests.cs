@@ -1,14 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Aperture.Parser.HTML;
 using Aperture.Parser.DataStructures;
 using System.Collections.Generic;
 using Aperture.Parser.HTML.Microsyntaxes.Numbers;
 
-namespace Aperture.Parser.Tests
+namespace Aperture.Parser.Tests.HTML.Microsyntaxes.Numbers
 {
     [TestClass]
-    public class DimensionListTests
+    public class ListsOfDimensionsTests
     {
         [TestMethod]
         public void TestDimensionListParsing()

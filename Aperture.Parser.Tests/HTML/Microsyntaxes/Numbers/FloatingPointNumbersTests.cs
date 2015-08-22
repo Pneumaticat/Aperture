@@ -4,10 +4,10 @@ using Aperture.Parser.HTML;
 using Aperture.Parser.Exceptions;
 using Aperture.Parser.HTML.Microsyntaxes.Numbers;
 
-namespace Aperture.Parser.Tests
+namespace Aperture.Parser.Tests.HTML.Microsyntaxes.DatesAndTimes
 {
     [TestClass]
-    public class FloatingPointTests
+    public class FloatingPointNumbersTests
     {
         [TestMethod]
         [ExpectedException(typeof(InvalidFloatNumberException),

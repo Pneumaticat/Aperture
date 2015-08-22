@@ -52,18 +52,20 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DateTimeUtilsTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\DatesAndTimesUtilsTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\ParserIdiomsTests.cs" />
+    <Compile Include="HTML\CommaSeparatedTokensTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FloatingPointTests.cs" />
-    <Compile Include="DimensionListTests.cs" />
-    <Compile Include="IntegerListTests.cs" />
-    <Compile Include="StringHandlingTests.cs" />
-    <Compile Include="MonthParserTests.cs" />
-    <Compile Include="DateParserTests.cs" />
-    <Compile Include="TimeParserTests.cs" />
-    <Compile Include="LocalDateAndTimeParserTests.cs" />
-    <Compile Include="TimeZoneParserTests.cs" />
-    <Compile Include="YearlessDateParserTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\Numbers\FloatingPointNumbersTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\Numbers\ListsOfDimensionsTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\Numbers\ListsOfIntegersTests.cs" />
+    <Compile Include="HTML\StringComparisonsTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\MonthsTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\DatesTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\TimesTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\LocalDatesAndTimesTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\TimeZonesTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\YearlessDatesTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aperture.Parser\Aperture.Parser.csproj">
