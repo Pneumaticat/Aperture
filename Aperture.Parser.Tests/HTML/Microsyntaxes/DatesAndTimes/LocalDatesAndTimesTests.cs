@@ -67,6 +67,10 @@ namespace Aperture.Parser.Tests.HTML.Microsyntaxes.DatesAndTimes
             Assert.AreEqual(
                 new DateTime(2001, 01, 01, 12, 0, 1),
                 LocalDatesAndTimes.ParseLocalDateAndTimeString("2001-01-01T12:00:01"));
+            Assert.AreEqual(
+                new DateTime(2001, 01, 01, 12, 0, 1, 1),
+                LocalDatesAndTimes.ParseLocalDateAndTimeString("2001-01-01T12:00:01.001"),
+                "Does not handle milliseconds in date string.");
         }
     }
 }

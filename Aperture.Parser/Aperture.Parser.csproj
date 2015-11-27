@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructures\DateTimeWithTimeZone.cs" />
     <Compile Include="DataStructures\TimeZoneOffset.cs" />
     <Compile Include="HTML\CommaSeparatedTokens.cs" />
     <Compile Include="HTML\Microsyntaxes\DatesAndTimes\Dates.cs" />

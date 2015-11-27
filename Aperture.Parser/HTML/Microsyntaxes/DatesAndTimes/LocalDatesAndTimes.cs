@@ -99,7 +99,8 @@ namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
                     time.Value.Minute,
                     // Truncates and drops decimals
                     (int)time.Value.Second,
-                    (int)(time.Value.Second - Math.Truncate(time.Value.Second)),
+                    // Complex code because doubles to int is hard.
+                    (int)Math.Round((time.Value.Second - Math.Truncate(time.Value.Second)) * 1000),
                     DateTimeKind.Local);
             // Maybe shouldn't specify local here? I mean, we are 
             // parsing a _local_ string, but still...
