@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aperture.Parser.DataStructures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,6 +59,50 @@ namespace Aperture.Parser.HTML.Microsyntaxes.DatesAndTimes
                 else
                     return true;
             }
+        }
+
+        public static Week? ParseWeekString(string input)
+        {
+            int position = 0;
+
+            string yearStr = ParserIdioms.CollectSequenceOfCharacters(
+                input,
+                ref position,
+                ch => ParserIdioms.ASCIIDigits.Contains(ch));
+            if (yearStr.Length < 4)
+                return null;
+            int year = int.Parse(yearStr);
+
+            if (year < 1)
+                return null;
+
+            if (position >= input.Length || input[position] != '-')
+                return null;
+            else
+                position++;
+
+            if (position >= input.Length || input[position] != 'W')
+                return null;
+            else
+                position++;
+
+            string weekStr = ParserIdioms.CollectSequenceOfCharacters(
+                input,
+                ref position,
+                ch => ParserIdioms.ASCIIDigits.Contains(ch));
+            if (weekStr.Length != 2)
+                return null;
+            int week = int.Parse(weekStr);
+
+            int maxweek = WeeksInWeekYear(year);
+
+            if (week < 1 || week > maxweek)
+                return null;
+
+            if (position < input.Length)
+                return null;
+
+            return new Week(week, year);
         }
     }
 }
