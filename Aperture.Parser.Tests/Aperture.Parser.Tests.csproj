@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="HTML\Microsyntaxes\DatesAndTimes\DatesAndTimesUtilsTests.cs" />
     <Compile Include="HTML\Microsyntaxes\DatesAndTimes\GlobalDatesAndTimesTests.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\WeeksTests.cs" />
     <Compile Include="HTML\Microsyntaxes\ParserIdiomsTests.cs" />
     <Compile Include="HTML\CommaSeparatedTokensTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

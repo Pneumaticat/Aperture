@@ -42,11 +42,13 @@
   <ItemGroup>
     <Compile Include="DataStructures\DateTimeWithTimeZone.cs" />
     <Compile Include="DataStructures\TimeZoneOffset.cs" />
+    <Compile Include="DataStructures\Week.cs" />
     <Compile Include="HTML\CommaSeparatedTokens.cs" />
     <Compile Include="HTML\Microsyntaxes\DatesAndTimes\Dates.cs" />
     <Compile Include="HTML\Microsyntaxes\DatesAndTimes\GlobalDatesAndTimes.cs" />
     <Compile Include="HTML\Microsyntaxes\DatesAndTimes\LocalDatesAndTimes.cs" />
     <Compile Include="HTML\Microsyntaxes\DatesAndTimes\Months.cs" />
+    <Compile Include="HTML\Microsyntaxes\DatesAndTimes\Weeks.cs" />
     <Compile Include="HTML\Microsyntaxes\Numbers\FloatingPointNumbers.cs" />
     <Compile Include="HTML\Microsyntaxes\Numbers\ListsOfDimensions.cs" />
     <Compile Include="HTML\Microsyntaxes\Numbers\ListsOfIntegers.cs" />
